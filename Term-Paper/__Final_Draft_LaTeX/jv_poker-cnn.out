@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Preliminaries}{}% 1
+\BOOKMARK [1][-]{section.2}{Background}{}% 2
+\BOOKMARK [1][-]{section.3}{Related Work}{}% 3
+\BOOKMARK [1][-]{section.4}{Games of Poker}{}% 4
+\BOOKMARK [1][-]{section.5}{Poker Relational Model: URP}{}% 5
+\BOOKMARK [2][-]{subsection.5.1}{Tensor Representation}{section.5}% 6
+\BOOKMARK [1][-]{section.6}{Poker Games}{}% 7
+\BOOKMARK [1][-]{section.7}{Inputs}{}% 8
+\BOOKMARK [1][-]{section.8}{Round of Betting}{}% 9
+\BOOKMARK [1][-]{section.9}{Monte Carlo Result Scale}{}% 10
+\BOOKMARK [1][-]{section.10}{Iterative Refining}{}% 11
+\BOOKMARK [1][-]{section.11}{Video Poker Implementation}{}% 12
+\BOOKMARK [2][-]{subsection.11.1}{Video Poker}{section.11}% 13
+\BOOKMARK [2][-]{subsection.11.2}{Limit Texas Hold'em}{section.11}% 14
+\BOOKMARK [2][-]{subsection.11.3}{2-7 Triple Draw}{section.11}% 15
+\BOOKMARK [1][-]{section.12}{conclusion}{}% 16
+\BOOKMARK [1][-]{section.13}{Acknowledgments}{}% 17

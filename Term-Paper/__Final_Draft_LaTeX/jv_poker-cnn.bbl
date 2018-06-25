@@ -1,0 +1,115 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\BIBand}{and}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\undefined \def\xfnm[#1]{\unskip,\space#1}\fi
+\makeatletter\def\@biblabel#1{#1.}\makeatother
+%Type = Article
+\bibitem[{Lieder et~al.(2018)Lieder, Resheff and Hope}]{ConvecFCN}
+\bibinfo{author}{Lieder\xfnm[ I.]}, \bibinfo{author}{Resheff\xfnm[ Y.S.]},
+  \bibinfo{author}{Hope\xfnm[ T.]}.
+\newblock \bibinfo{title}{Learning tensorflow} \bibinfo{year}{2018};\URLprefix
+  \url{https://www.safaribooksonline.com/library/view/learning-tensorflow/9781491978504/assets/letf_0401.png_2018};
+  \bibinfo{note}{[Online; accessed March 17, 2018]}.
+%Type = Article
+\bibitem[{Sutskeve and Nair(2008)}]{ISutskeve2008}
+\bibinfo{author}{Sutskeve\xfnm[ I.]}, \bibinfo{author}{Nair\xfnm[ V.]}.
+\newblock \bibinfo{title}{Mimicking go experts with convolutional neural
+  networks} \bibinfo{year}{2008};.
+%Type = Article
+\bibitem[{Moravc{\'{\i}}k et~al.(2017)Moravc{\'{\i}}k, Schmid, Burch,
+  Lis{\'{y}}, Morrill, Bard, Davis, Waugh, Johanson and Bowling}]{Moravcik2017}
+\bibinfo{author}{Moravc{\'{\i}}k\xfnm[ M.]}, \bibinfo{author}{Schmid\xfnm[
+  M.]}, \bibinfo{author}{Burch\xfnm[ N.]}, \bibinfo{author}{Lis{\'{y}}\xfnm[
+  V.]}, \bibinfo{author}{Morrill\xfnm[ D.]}, \bibinfo{author}{Bard\xfnm[ N.]},
+  \bibinfo{author}{Davis\xfnm[ T.]}, \bibinfo{author}{Waugh\xfnm[ K.]},
+  \bibinfo{author}{Johanson\xfnm[ M.]}, \bibinfo{author}{Bowling\xfnm[ M.H.]}.
+\newblock \bibinfo{title}{Deepstack: Expert-level artificial intelligence in
+  no-limit poker}.
+\newblock \emph{\bibinfo{journal}{CoRR}}
+  \bibinfo{year}{2017};\bibinfo{volume}{abs/1701.01724}.
+\newblock \URLprefix \url{http://arxiv.org/abs/1701.01724}.
+  \href{http://arxiv.org/abs/1701.01724}{\tt arXiv:1701.01724}.
+%Type = Article
+\bibitem[{Johanson(2013)}]{MJohanson2013}
+\bibinfo{author}{Johanson\xfnm[ M.]}.
+\newblock \bibinfo{title}{Measuring the size of large no-limit poker games}.
+\newblock \emph{\bibinfo{journal}{CoRR}}
+  \bibinfo{year}{2013};\bibinfo{volume}{abs/1302.7008}.
+\newblock \URLprefix \url{http://arxiv.org/abs/1302.7008}.
+  \href{http://arxiv.org/abs/1302.7008}{\tt arXiv:1302.7008}.
+%Type = Inproceedings
+\bibitem[{Dahl(2001)}]{Dfredrik2001}
+\bibinfo{author}{Dahl\xfnm[ F.A.]}.
+\newblock \bibinfo{title}{A reinforcement learning algorithm applied to
+  simplified two-player texas hold'em poker}.
+\newblock In: \bibinfo{editor}{De~Raedt\xfnm[ L.]},
+  \bibinfo{editor}{Flach\xfnm[ P.]}, eds. \emph{\bibinfo{booktitle}{Machine
+  Learning: ECML 2001}}. \bibinfo{address}{Berlin, Heidelberg}:
+  \bibinfo{publisher}{Springer Berlin Heidelberg}.
+\newblock ISBN \bibinfo{isbn}{978-3-540-44795-5}; \bibinfo{year}{2001}:\unskip
+  \bibinfo{pages}{85--96}.
+%Type = Article
+\bibitem[{Yakovenko et~al.(2015)Yakovenko, Cao, Raffel and
+  Fan}]{YakovenkoCRF15}
+\bibinfo{author}{Yakovenko\xfnm[ N.]}, \bibinfo{author}{Cao\xfnm[ L.]},
+  \bibinfo{author}{Raffel\xfnm[ C.]}, \bibinfo{author}{Fan\xfnm[ J.]}.
+\newblock \bibinfo{title}{Poker-cnn: {A} pattern learning strategy for making
+  draws and bets in poker games}.
+\newblock \emph{\bibinfo{journal}{CoRR}}
+  \bibinfo{year}{2015};\bibinfo{volume}{abs/1509.06731}.
+\newblock \URLprefix \url{http://arxiv.org/abs/1509.06731}.
+  \href{http://arxiv.org/abs/1509.06731}{\tt arXiv:1509.06731}.
+%Type = Article
+\bibitem[{Yakovenko(2016)}]{moscow25}
+\bibinfo{author}{Yakovenko\xfnm[ N.]}.
+\newblock \bibinfo{title}{Deep draw} \bibinfo{year}{2016};\URLprefix
+  \url{https://github.com/moscow25/deep_draw}; \bibinfo{note}{[Github; poker
+  lib]}.
+%Type = Article
+\bibitem[{Nicolai and J.~Hilderman(2010)}]{Garrett2010}
+\bibinfo{author}{Nicolai\xfnm[ G.]}, \bibinfo{author}{J.~Hilderman\xfnm[ R.]}.
+\newblock \bibinfo{title}{Algorithms for evolving no-limit texas hold'em poker
+  playing agents.} \bibinfo{year}{2010};:\bibinfo{pages}{20--32}.
+%Type = Article
+\bibitem[{Simard et~al.(2003)Simard, Steinkraus and Platt}]{CnnSimard2003}
+\bibinfo{author}{Simard\xfnm[ P.Y.]}, \bibinfo{author}{Steinkraus\xfnm[ D.]},
+  \bibinfo{author}{Platt\xfnm[ J.]}.
+\newblock \bibinfo{title}{Best practices for convolutional neural networks
+  applied to visual document analysis} \bibinfo{year}{2003};\URLprefix
+  \url{https://www.microsoft.com/en-us/research/publication/best-practices-for-convolutional-neural-networks-applied-to-visual-document-analysis/}.
+%Type = Article
+\bibitem[{Stanescu et~al.(2016)Stanescu, Barriga, Hess and Buro}]{Stanescu2016}
+\bibinfo{author}{Stanescu\xfnm[ M.]}, \bibinfo{author}{Barriga\xfnm[ N.A.]},
+  \bibinfo{author}{Hess\xfnm[ A.]}, \bibinfo{author}{Buro\xfnm[ M.]}.
+\newblock \bibinfo{title}{Evaluating real-time strategy game states using
+  convolutional neural networks}
+  \bibinfo{year}{2016};:\bibinfo{pages}{1--7}\DOIprefix\doi{10.1109/CIG.2016.7860439}.
+%Type = Article
+\bibitem[{Heinrich and Silver(2016)}]{JHeinrich2017}
+\bibinfo{author}{Heinrich\xfnm[ J.]}, \bibinfo{author}{Silver\xfnm[ D.]}.
+\newblock \bibinfo{title}{Deep reinforcement learning from self-play in
+  imperfect-information games}.
+\newblock \emph{\bibinfo{journal}{CoRR}}
+  \bibinfo{year}{2016};\bibinfo{volume}{abs/1603.01121}.
+\newblock \URLprefix \url{http://arxiv.org/abs/1603.01121}.
+  \href{http://arxiv.org/abs/1603.01121}{\tt arXiv:1603.01121}.
+%Type = Article
+\bibitem[{Tesauro(1994)}]{GTesauro1994}
+\bibinfo{author}{Tesauro\xfnm[ G.]}.
+\newblock \bibinfo{title}{Td-gammon, a self-teaching backgammon program,
+  achieves master-level play}.
+\newblock \emph{\bibinfo{journal}{Neural Computation}}
+  \bibinfo{year}{1994};\bibinfo{volume}{6}(\bibinfo{number}{2}):\bibinfo{pages}{215--219}.
+\newblock \DOIprefix\doi{10.1162/neco.1994.6.2.215}.
+
+\end{thebibliography}

@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,xcolor}
+\usepackage{upquote}
+
+
+
+\begin{document}
+
+\title{\textbf{Corrections To Approximation Algorithms Paper}}\\
+\author{\textit{James M. Vrionis}
+        \date{March $9^{th}$ 2018}
+        %\texttt{}
+       }
+
+\maketitle
+\hline
+
+
+%------------------------------------------------------------------------
+\section{Paper Rules}
+There are \textit{Three Basic Rules} to keep in mind when writing
+a paper.  
+\begin{enumerate}
+\item Do {\color{red}not} start a sentence with a symbol.
+\item Avoid {\color{red}run together} mathematical expressions.
+\item Watch out for {\color{red}misplaced symbols}.
+\end{enumerate}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\section{Equation in the Title}
+
+
+% \begin{center}
+% Old
+% \end{center}
+
+One of the most common of our violated rules can be found in the 
+title of the paper. It is a violation to start a paper with an 
+equation.  The title of this paper violates rules 1 and 2, which
+can be seen below in {\color{red}red} while a corrected version 
+will follow in {\color{blue}blue}.\\ 
+
+\begin{center}
+{\color{red}$O$ $\left( \sqrt{\log(n)}\right)$} \textbf{Approximation Algorithms 
+for Min UnCut, Min 2CNF Deletion, and Directed Cut Problems}
+\end{center}
+
+% A violation from here three basic rules often lecture 10 
+% in the title to this article.  
+
+
+
+% The title of this paper violates rules 1 and 2. To fix we must add 
+% {\color{blue}We give} before the term \\ 
+% $O \! \left( \sqrt{\log(n)}\right)$.\\
+
+% \begin{center}
+%     New
+% \end{center}
+
+\begin{center}
+{\color{blue}We give} $O \! \left( \sqrt{\log(n)}\right)$ \textbf{Approximation 
+Algorithms for Min UnCut, Min 2CNF Deletion, and Directed Cut Problems}
+\end{center}
+
+Going one step further.
+
+\begin{center}
+\textbf{Improvement on Approximation Algorithms for Min UnCut, Min 2CNF Deletion, 
+and Directed Cut Problems}
+\end{center}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\section{Abstract}
+\paragraph{}
+ A \textbf{Abstract} is a \emph{self-contained} summary of the 
+article used to grab the attention and interest of the reader.
+Typical things to avoid are Formulas, References, unsubstantiated 
+statements and claims, and in some journals use of  
+{\ttfamily"}We{\ttfamily"}.  Violation will be in {\color{red}red} font
+while a corrected version will follow in {\color{blue}blue}.\\
+
+\paragraph      
+{\color{red}We} give {\color{red}$O \! (\sqrt{\log(n)})$}-approximation 
+algorithms for the Min UnCut, Min 2CNF Deletion, Directed Balanced Separator, 
+and Directed Sparsest Cut problems. The previously best-known algorithms 
+give an {\color{red}$O \! (\log(n))$}-approximation for Min UnCut 
+{\color{red}[9]}, {\color{red}Directed Balanced Separator [17]}, 
+{\color{red}Directed Sparsest Cut [17]}, and an 
+{\color{red}$O \! (\log(n) \log(n) \log(n) )$}-approximation for Min 2CNF 
+Deletion {\color{red}[14]}.{\color{red}We} also show that the integrality gap of an 
+SDP relaxation. \\
+
+
+\paragraph{} 
+    {\color{blue}
+    An improvement on previously best-known approximation algorithms for several 
+    combinatorial problems, namely: Min UnCut, Directed Balanced Separator, 
+    Directed Sparsest Cut and Min 2CNF Deletion. New methods obtained using 
+    semidefinite relaxation on directed graphs with a simpler algorithm that 
+    deals with Min UnCut.} \\
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\section{Definition 1}
+
+\paragraph{}
+    Definition 1 (Min {\color{red}CSP(F)}). Consider boolean 
+    variables {\color{red}$b_1,...,b_n$} and a set of constraints 
+    {\color{red}$C$ from $F$}. The goal is to find an assignment 
+    that minimizes the number of unsatisfied constraints. \\
+
+    Corrections to the above definition.
+
+    \begin{itemize}
+        \item A Minimum Constraint Satisfaction Problem or Min CSP may have just been 
+    defined it is somewhat confusing in the definition. 
+        \item A set of constraints C from a set F.
+        \item Ldots used for boolean variable range.
+    \end{itemize}
+
+
+    Definition 1 (Min CSP($F$)) Consider {\color{blue}a set $C$ of constraints from a 
+    set $F$} with boolean variable {\color{blue}$b_1, \ldots, b_n$}. 
+    {\color{blue}We want to show} an assignment that minimizes the number of 
+    unsatisfied constraints.
+
+    \begin{itemize}
+        \item A Minimum Constraint Satisfaction Problem or Min CSP may have just been 
+    defined it is somewhat confusing in the definition. 
+        \item A set of constraints C from a set F.
+        \item Ldots used for boolean variable range.
+    \end{itemize}
+
+
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\section{Three More Violations}
+
+%------------------------------------------------------------------------
+\subsection{How Not to State a Theorem 3.1}
+
+Theorem 3.1. There is a randomized polynomial-time algorithm for finding an 
+$O( \sqrt{\log (n)})$ approximation for the Min 2CNF Deletion problem.
+
+\begin{itemize}
+    \item The statement of this theorem is {\color{red}not} self-contained.
+    \item Statement is vague and unclear.
+    \item Min 2CNF Deletion problem is defined earlier. 
+\end{itemize}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\subsection{How Not to State a Theorem 2.1}
+Theorem 2.1. There is a randomized polynomial-time algorithm for finding an 
+$O( \sqrt{\log (n)})$ approximation for the Min UnCUT problem.
+
+\begin{itemize}
+    \item The statement of this theorem is {\color{red}not} self-contained.
+    \item Statement is vague and unclear.
+    \item Min UnCUT Deletion problem is defined earlier. 
+\end{itemize}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+
+\subsection{{\ttfamily"}Any{\ttfamily"} Violations}
+
+In {\color{red}red} I have identified $3$ of the $4$ 
+{\ttfamily"}Any{\ttfamily"} violations. \\
+
+The previously best-known approximation ratio for Min UnCut 
+is $O(\log n)$ [9], and the best previously known
+approximation for Min 2CNF Deletion is 
+$O(\log n \log \log n)$[14]. Both problems are known to be 
+Max SNP-hard [18]. The best-known lower bound for Min 
+2CNF Deletion is $8\sqrt{5} - 15$ $\approx$ $2.88854$ [7].
+Moreover, if the Unique Games Conjecture holds true, then 
+Min 2CNF Deletion cannot be approximated within {\color{red}any} 
+constant factor [13]. \\
+
+LEMMA 5.1. There is a polynomial-time algorithm for the following 
+task. Given {\color{red}any} feasible SDP solution with $\beta$ $=$ 
+$\sum_{(i,j)\in E }$ $d(i,j)$, and a vertex $k$ such that the ball of 
+squared-radius $1/(8n^{2}$) around $v_{k}$ contains at least $n/2$ vectors
+(other than $v_{\not}$), the algorithm finds a cut $(S,\bar{S})$ with
+directed expansion at most $O(\beta n)$. \\
+
+
+THEOREM 6.2 Given $r$, $d=4k$, $k \geq r \geq 2$, there exist a positive 
+constant $\epsilon$ $= \epsilon(r)$ so that in {\color{red}any} set of
+more than $(2 - \epsilon(r))^{d}$ $(\pm 1)$-vectors there are $r$ 
+pairwise orthogonal vectors.\\
+
+
+Corrected {\ttfamily"}Any{\ttfamily"} violations will be shown below
+in {\color{blue}blue}. \\
+
+The previously best-known approximation ratio for Min 
+UnCut is $O(\log n)$ [9], and the best previously known
+approximation for Min 2CNF Deletion is 
+$O(\log n \log \log n)$[14]. Both problems are known to be 
+Max SNP-hard [18]. The best known lower bound for Min 
+2CNF Deletion is $8\sqrt{5} - 15$ $\approx$ $2.88854$ [7].
+Moreover, if the Unique Games Conjecture holds true, then 
+Min 2CNF Deletion cannot be approximated within 
+{\color{blue}every} constant factor [13]. \\
+
+
+LEMMA 5.1. There is a polynomial-time algorithm for the following 
+task. Given {\color{blue}an arbitrarily} feasible SDP solution 
+with $\beta$ $=$ $\sum_{(i,j)\in E }$ $d(i,j)$, and a vertex $k$ 
+such that the ball of squared-radius $1/(8n^{2}$) around $v_{k}$ 
+contains at least $n/2$ vectors (other than $v_{\not}$), the 
+algorithm finds a cut $(S,\bar{S})$ with directed expansion at 
+most $O(\beta n)$. \\
+
+
+THEOREM 6.2 Given $r$, $d=4k$, $k \geq r \geq 2$, there exist a positive 
+constant $\epsilon = \epsilon(r)$ so that in {\color{blue}every} set of
+more than $(2 - \epsilon(r))^{d}$ $(\pm 1)$-vectors there are $r$ 
+pairwise orthogonal vectors.\\
+%------------------------------------------------------------------------
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

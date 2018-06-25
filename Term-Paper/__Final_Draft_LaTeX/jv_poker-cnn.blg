@@ -1,0 +1,77 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: jv_poker-cnn.aux
+The style file: model6-num-names.bst
+Database file #1: jv_poker-cnn.bib
+Name 1 in "Itay Lieder, and Yehezkel S. Resheff, and Tom Hope" has a comma at the end for entry ConvecFCN
+while executing---line 1572 of file model6-num-names.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Name 1 in "Itay Lieder, and Yehezkel S. Resheff, and Tom Hope" has a comma at the end for entry ConvecFCN
+while executing---line 1666 of file model6-num-names.bst
+Name 2 in "Itay Lieder, and Yehezkel S. Resheff, and Tom Hope" has a comma at the end for entry ConvecFCN
+while executing---line 1666 of file model6-num-names.bst
+Name 1 in "Itay Lieder, and Yehezkel S. Resheff, and Tom Hope" has a comma at the end for entry ConvecFCN
+while executing---line 1666 of file model6-num-names.bst
+Name 2 in "Itay Lieder, and Yehezkel S. Resheff, and Tom Hope" has a comma at the end for entry ConvecFCN
+while executing---line 1666 of file model6-num-names.bst
+`journal' is a missing field, not a string, for entry ConvecFCN
+while executing---line 1666 of file model6-num-names.bst
+Warning--empty journal in ConvecFCN
+`journal' is a missing field, not a string, for entry ISutskeve2008
+while executing---line 1666 of file model6-num-names.bst
+Warning--empty journal in ISutskeve2008
+`journal' is a missing field, not a string, for entry moscow25
+while executing---line 1666 of file model6-num-names.bst
+Warning--empty journal in moscow25
+`journal' is a missing field, not a string, for entry Garrett2010
+while executing---line 1666 of file model6-num-names.bst
+Warning--empty journal in Garrett2010
+`journal' is a missing field, not a string, for entry CnnSimard2003
+while executing---line 1666 of file model6-num-names.bst
+Warning--empty journal in CnnSimard2003
+`journal' is a missing field, not a string, for entry Stanescu2016
+while executing---line 1666 of file model6-num-names.bst
+Warning--empty journal in Stanescu2016
+You've used 12 entries,
+            3094 wiz_defined-function locations,
+            752 strings with 7952 characters,
+and the built_in function-call counts, 7397 in all, are:
+= -- 516
+> -- 223
+< -- 8
++ -- 96
+- -- 70
+* -- 854
+:= -- 1032
+add.period$ -- 41
+call.type$ -- 12
+change.case$ -- 64
+chr.to.int$ -- 12
+cite$ -- 18
+duplicate$ -- 658
+empty$ -- 600
+format.name$ -- 105
+if$ -- 1384
+int.to.chr$ -- 1
+int.to.str$ -- 13
+missing$ -- 122
+newline$ -- 77
+num.names$ -- 38
+pop$ -- 209
+preamble$ -- 1
+purify$ -- 60
+quote$ -- 0
+skip$ -- 160
+stack$ -- 0
+substring$ -- 287
+swap$ -- 426
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 72
+warning$ -- 6
+while$ -- 42
+width$ -- 0
+write$ -- 189
+(There were 11 error messages)

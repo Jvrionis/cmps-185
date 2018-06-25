@@ -1,0 +1,190 @@
+% CMPS-185 
+% Toilet Paper Probelm Write-up
+% 1-16-18
+
+\documentclass[10pt]{article}
+\usepackage{ amssymb, amsmath, color, cancel }
+
+\addtolength{\textheight}{2.2in}
+\addtolength{\topmargin}{-1.2in}
+\addtolength{\textwidth}{1.85in}
+\addtolength{\evensidemargin}{-1.0in}
+\addtolength{\oddsidemargin}{-1.0in}
+\setlength{\parskip}{0.05in}
+\setlength{\parindent}{0.4in}
+
+\raggedbottom
+
+\newcommand{\given}{\, | \,}
+
+\begin{document}
+
+\begin{center}
+
+\textbf{\large THE TOILET PAPER PROBLEM} \\ 
+ 
+\hspace{0.1in}
+
+DONALD E. KNUTH \\
+
+\textit{Computer Science Department, Stanford University, Stanford, CA 94305} \\
+
+\end{center}
+
+\label{1. Introduction}
+\textbf{1. Introduction } The toilet paper dispensers in a certain building are designed to hold two rolls 
+of tissues, and a person can use either roll. \\
+\indent There are two kinds of people who use the rest rooms in the building: \textit{big-choosers} and \textit{little-choosers}. 
+A big-chooser always takes a piece of toilet paper from the roll that is currently larger; a little-chooser 
+always does the opposite. However, when the two rolls are the same size, or when only one roll is 
+nonempty, everybody chooses the nearest nonempty roll. When both rolls are empty, everybody has a 
+problem. \\
+\indent Let us assume that people enter the toilet stalls independently at random, with probability $p$
+that 
+they are big-choosers and probability $q = 1 - p$ that they are little-choosers. If the janitor
+supplies 
+a particular stall with two fresh rolls of toilet paper, both of length $n$, let $M_n \! \left( p \right)$ be
+the average number of portions left on one roll when the other roll first empties. (We assume that 
+everyone uses the same amount of paper, and that the lengths are expressed in terms of this unit.) 
+For example, it is easy to establish that \\
+
+%\begin{equation*} \label{nb-2}
+%M_1 \left(  p \right) = 1,  M_{2} \left(  p \right) = 2 - p,  M_{3} \left(  p \right) = 3 - 2p - p^{2} + p^{3}; 
+%M_{n} \left(  0 \right) = n; M_{n} = 1 .
+%\end{equation*}
+\begin{center}
+$M_1 \left(  p \right) = 1$,  \mbox{ } $M_{2} \left(  p \right) = 2 - p$,  $M_{3} \left(  p \right) = 3 - 2p - p^{2} + p^{3}$; 
+$M_{n} \left(  0 \right) = n$; \mbox{  }  $M_{n} \left( 1 \right) = 1$ .
+\end{center}
+
+
+The purpose of this paper is to study the asymptotic value of $M_{n} \left( p \right)$ for fixed $p$ as 
+$n \to \infty$. We will see that the generating function $\sum_{n} \! M_{n} \left( p \right) z^{n}$ has a 
+surprisingly simple form, from which the asymptotic behavior can readily be deduced. Along the way we will 
+encounter several other
+interesting facts.
+
+\label{2. Recurrence Relations}
+\textbf{2. Recurrence Relations.} Let us begin by generalizing the problem, slightly, using the notation
+$M_{mn} \left( p \right)$ to stand for the mean number of portions left when one roll empties, 
+if we start with $m$ on one roll and $n$ on the other. Thus
+
+\begin{flalign*}
+& M_{n} \! \left( p \right) = M_{nn} \! \left( p \right); \\
+& M_{n0} \! \left( p \right) = m; \\
+& M_{nn} \! \left( p \right) = M_{n(n-1)} \left( p \right), \hspace{2em }  \mbox{if } n > 0;\\
+& M_{mn} \! \left( p \right) = p \! M_{(m-1)n} \left( p \right) + q \! M_{m(n-1)} \left( p \right), \hspace{1em } \mbox{if }  m > n > 0. 
+\end{flalign*}
+
+\noindent The value of $M_{n} \left(p \right)$ can be computed for all $n$ from these recurrence relations, 
+since no pairs $\left( m^{\prime}, n^{\prime} \right)$ with $m^{\prime} < n^{\prime}$ will arise. 
+
+It is convenient to visualize the recurrence by drawing certain arcs between adjacent lattice points in the plane, 
+where the arc from $\left( n, n \right)$ to $\left( m - 1, n \right)$ has weight $p$ and from $\left( m, n \right)$ 
+to $\left( m, n - 1 \right)$ has weight $q$, for all $0 < n < m$; the arc from $\left( m, n \right)$ to 
+$\left( n, n - 1 \right)$ has weight $1$ for all
+$n > 0$; and there are no other arcs. Then $M_{mn} \! \left( p \right)$ 
+is the sum, over all $k > 1$, of $k$ times the sum of the weights of all paths from $\left( m, n \right)$ to 
+$\left( k, 0 \right)$, where the weight of a path is the product of the individual arc weights. \\
+
+A path that starts at the diagonal point $\left( n, n \right)$ must go first to $ \left( n, n - 1 \right)$; then it either 
+returns to the diagonal at $\left( n - 1, n - 1 \right)$ or goes to $\left( n, n - 2 \right)$, etc. Let $c_{k}$ be the number 
+of paths from
+$\left( n, n \right)$ to $\left( n - k, n - k \right)$ whose intermediate points do not touch the diagonal, 
+and let $d_{nk}$ be the number of paths from $\left( n, n - 1 \right)$ to $\left( k, 1 \right)$ whose points do not ever 
+touch the diagonal. A path that starts at $\left( n, n \right)$ either returns to the diagonal for the first time at some point 
+$\left( n - k, n - k \right)$, or never returns to the diagonal at all; it follows that
+\\
+
+\newpage
+
+\begin{flalign*}
+M_{n} \! \left( p \right)  & =  c_{1}p M_{n-1} \! \left( p \right) + c_{2}p^{2}q M_{n-2} \! \left( p \right) + \cdots + c_{n-1}p^{n-1} q^{n-2} M_{1} \! \left( p \right) + L_{n} \! \left( p \right) \\
+& = \sum_{ 0 < k < n } c_{k}p^{k} q^{k-1} M_{n-k} \! \left( p \right) + L_{n} \! \left( p \right); \\
+L_{n} \! \left( p \right) & = \sum_{ 2 \leq k \leq n } k d_{nk} p^{n-k} q^{n-1}, \mbox{   for } n \geq 2; \hspace{2em } L_{1} \! \left( p \right) = 1 .
+\end{flalign*}
+
+
+(Each path from $ \left( n, n \right)$ to $\left( n - k, n - k \right)$ has weight $p^{k}q^{k-l}$ if no intermediate 
+diagonal points are involved, since the step to $\left( n, n - 1 \right)$ has weight $1$ and then there are $k$ steps 
+of weight $p$ and $k - 1$ of weight $q$, in some order. Similarly, each diagonal-avoiding path from $\left( n, n - 1 \right)$ 
+to $\left( k, 1 \right)$ has weight $p^{n-k} q^{n-2}$. ) \\
+
+The coefficients $c_{k}$ are the well-known Catalan numbers, and the coefficients $d_{nk}$ are the well-known numbers that
+arise in the classical ballot problem; see, for example, [\textbf{2}, III.1], [\textbf{3}, exercise 2.2.1-4]. We can discover the
+required values by observing that $d_{nk}$ is the number of decreasing paths from $\left( n, n - 1 \right)$ to $\left( k, 1 \right)$ 
+minus the number of decreasing paths from $\left( n, n - 1 \right)$ to $\left( 1, k \right)$, where a "decreasing path" is any 
+path that decreases either the left component or the right component by unity at each step. This follows because there is a 
+$1-1$ correspondence between all decreasing paths from $\left( n, n - 1 \right)$ to $\left( k, 1 \right)$ that do touch the 
+diagonal and all decreasing paths from $\left( n, n - 1 \right)$ to $\left( 1, k \right)$; the idea [\textbf{1}] is to reflect the path 
+about the diagonal, starting after the place where it first touches a diagonal point. Since the number of decreasing paths from
+$\left( a, b \right)$ to $\left( c, d \right)$ is 
+$\bigl( \begin{smallmatrix}
+a+b-c-d \\ a-c
+\end{smallmatrix} \bigr)$
+$=$
+$\bigl( \begin{smallmatrix}
+a+b-c-d \\ b-d
+\end{smallmatrix} \bigr)$ for all $a \geq c$ and $b \geq d$, we have
+
+
+
+
+%$\left( a, b \right)$ to $\left( c, d \right)$ is $\left( \begin{array}{c} a+b-c-d  \\ a - c \end{array} \right) = \left( \begin{array}{c} a+b-c-d  \\ a - c \end{array} \right)
+%\left( \begin{array}{c} a+b-c-d \\ b - d \end{array} \right)$ for all $a \geq c$ and $b \geq d$, we have
+
+\begin{equation*}
+d_{nk} = \left( \begin{array}{c} 2n - k -2 \\ n - 2 \end{array} \right) - \left( \begin{array}{c} 2n - k -2 \\ n - 1 \end{array} \right)  =  \left( \begin{array}{c} 2n - k -2 \\ n - 2 \end{array} \right) \frac{k-1}{n-1} .
+\end{equation*}
+
+\begin{flushleft}
+Furthermore $c_{n-1} = d_{n2}$, hence 
+\end{flushleft}
+
+
+\begin{equation*}
+c_{n} = \left( \begin{array}{c} 2n -2 \\ n - 1 \end{array} \right) \! \frac{1}{n}
+\end{equation*}
+
+\label{3. Special power series.}
+\textbf{3. Special power series.} The generating function for Catalan numbers
+\begin{equation*}
+C(z) = c_{1}z + c_{2}z^{2} + \cdots  = \sum_{n \geq 1} \left( \frac{2n-2}{n-1} \right) \frac{1}{n}z^{n} = 
+\frac{ 1- \sqrt{ 1 - 4z}}{2}
+\end{equation*}
+
+can be derived in many ways. For our purposes it seems best to make use of the general identity 
+
+
+\label{eq:star1}$\boldsymbol{ (\ast) }$ 
+\begin{equation*}
+ \sum_{k \geq 0} \left( \frac{2k + w}{k} \right) z^{k} = \frac{1}{\sqrt{1-4z}} \left( \frac{1 - \sqrt{1-4z}}{2z} \right)^{w}.
+\end{equation*}
+
+This well-known identity holds for all complex numbers $w$; it can be proved easily by integration: The 
+coefficient of $z^{k}$ in the Maclaurin expansion of the right-hand side is  
+\begin{equation*}
+\frac{1}{2 \pi i}\oint \!  \frac{1}{ \sqrt{1 - 4z} } \left( \frac{1 - \sqrt{1-4z}}{2z} \right)^{w} \frac{dz}{z^{k+1}} = \frac{1}{2 \pi i } \oint \frac{dt} {(1-t)^{w+k+1}t^{k+1} }
+\end{equation*}
+
+if we make the substitutions $t = \frac{1}{2} \left( 1- \sqrt{1-4z} \right)$, $z=t-t^{2}$, $dz = (1-2t)dt$. 
+The latter integral is the residue of the integrand, i.e., the coefficient of $t^{k}$ in $(1-t)^{-w-k-1}$, 
+namely $\bigl( \begin{smallmatrix}
+-w-k-1 \\ k
+\end{smallmatrix} \bigr)$
+$(-1)^{k}$
+$=$
+$\bigl( \begin{smallmatrix}
+2k + w \\ k
+\end{smallmatrix} \bigr)$.  (A more elementary proof can be found in [\textbf{3}, exercise 1.2.6-26].) \\
+\indent The derivative of $C (z)/z$ with respect to $z$ is $C (z)^{2} / (z^{2} \sqrt{1 - 4z})$; 
+hence we can replace $w$ by $w + 1$ in \label{eq:star2}$\boldsymbol{ (\ast) }$  and integrate, obtaining the companion form
+
+\begin{equation*}
+\sum_{k \geq} \frac{w}{k+w} \left( \begin{array}{c} 2k+w-1\\ k \end{array} \right) z^{k} = 
+\left( \frac{1 - \sqrt{1-4z}}{2z} \right)^{w}.
+\end{equation*}
+
+\noindent Again, this result is valid for all complex $w$, if we evaluate the coefficient by continuity when  $k + w = 0$. The case $w = 1$ of this formula reduces numbers to the generating function for Catalan numbers stated earlier.
+
+\end{document}

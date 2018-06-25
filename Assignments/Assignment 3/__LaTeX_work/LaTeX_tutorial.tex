@@ -1,0 +1,1724 @@
+% %---------------------- begin preamble ----------------------
+% % Modify the article document class, so that it 
+% %  produces two columns per page in 11pt
+% \documentclass[11pt,twocolumn]{article}
+% %\usepackage{times}
+% \usepackage[square]{natbib} 
+% \usepackage{enumitem, amsmath,amssymb,amsthm}
+% \usepackage[a4paper]{geometry}
+% \usepackage{url, hyperref} 
+% \usepackage{fullpage}
+% \usepackage[svgnames]{xcolor}
+% \usepackage{tikz}
+% \usetikzlibrary{automata, positioning, arrows}
+
+% %ceated during my cmps102  class.
+% \renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+% \newcommand\DALGORITHM{\vspace{.10in}\textbf{Description of Algorithm: }}
+% \newcommand\PCORRECT{\vspace{.10in}\textbf{Proof of Correctness: }}
+% \newcommand\TIME{\vspace{.10in}\textbf{Analysis of Time: }}
+% \newcommand\SPACE{\vspace{.10in}\textbf{Analysis of Space: }}
+
+% %----------------------------------------------------------------------
+% % 5-7pgs
+% %
+% % Document classes (describe at least three).
+% % How to make a title and a list of authors and their affiliations
+% % (this should go beyond what was discussed in class).
+% % Sections, subsections, sub-subsections, paragraphs, and their 
+% %  labeling.
+% % Environments, including the tabular environment (describe at 
+% %  least three environments).
+% % Mathematical formulas.
+% % User-defined macros (give at least three interesting examples, all 
+% %  different from the ones discussed in class).
+% % Bibliography and citation.
+% % At least one additional feature of LATEX that you find worth 
+% %  including in your tutorial (e.g.,creating figures, graphing data, 
+% %  making an index for a thesis or book).
+% %
+% % Your document should contain a bibliography listing a few 
+% %  references with information about
+% %----------------------------------------------------------------------
+
+% %----------------------- end preamble -----------------------
+% \begin{document}
+% \title{Basic \LaTeX{}: Features Explained} \\
+% \author{James M. Vrionis\\
+%         CMPS-185 \\
+%         University of California, Santa Cruz
+%         \date{1-26-2018} 
+%         %\texttt{}
+%        }
+% \maketitle 
+
+% %----------------------------------------------------------------------
+% ~\cite{wiki_tables}
+
+% \section{Introduction} 
+% Pronounced either LAH-tek or LAY-tek, 
+% \LaTeX{} is a \textit{free} typeseting language 
+% developed by \textit{Leslie Lamport}  
+% based on \textit{Donald E. Knuth's}  
+% \TeX{}.\\
+
+% Markup Language Key Features: ~\cite{rjgunning_gunning_2015} 
+% \begin{itemize}[label={}]
+%    \item Typesetting journal articles.
+%    \item Technical reports. 
+%    \item Bibliographies and indexes.
+%    \item and many more.
+% \end{itemize}
+
+% \section{Install}
+% \subsubsection{Ubuntu Linux}
+% Open Terminal to install \textbf{TEX LIVE} via the \textit{apt-get}
+% command: \\
+% % Visual of where the preamble is in latex document
+% \framebox{
+% \parbox[l][1.50cm]{6.0cm}{
+% \addvspace{0.2cm} \centering 
+% \textit{sudo apt-get install texlive-full} \\
+% } 
+% }\\
+
+% \textit{NOTE: it's always good to perform a} 
+% \textbf{"sudo apt-get upgrade \&\& sudo apt-get update"} 
+% \textit{before installing anything new.}\\
+
+% now ".tex files" can be compiled using the pdflatex $<$your file$>$.tex
+% as long as you in the same directory as the file. \\
+
+
+% \begin{center}
+% Alternatively, you may install from the link below \\
+% \textittt{http://www.tug.org/texlive/}\\
+% \end{center}
+
+% \subsubsection{MacOS}
+% Open Terminal to install \MacTeX{} using \textit{Homebrew Cast}.\\
+
+% \framebox{
+% \parbox[l][2.50cm]{6.5cm}{
+% \addvspace{0.2cm} \centering 
+% \textit{macbk-usr\$ brew tap caskromm/cask} \\
+% \textit{macbk-usr\$ brew cask install mactex} \\
+% } 
+% }\\
+
+% now ".tex files" can be compiled using the pdflatex $<$your file$>$.tex
+% as long as you in the same directory as the file.\\
+
+% \begin{center}
+% Alternatively, you may install from the link below \\
+% \textittt{http://www.tug.org/mactex/}\\
+% \end{center}
+
+% \subsubsection{Windows}
+% To install and use a \LaTeX{} distribution on Windows 
+% operating system one should install \textbf{\TeX{} Live} 
+% via the installer.\\
+
+
+% \begin{center}
+% \textbf{Install via link below}\\
+% \texittt{http://www.tug.org/texlive/} 
+% \end{center}
+
+
+% \section{Compilation}
+
+% All three Operating Systems have very similar terminal
+% command line arguments necessary to compile you ".tex"
+% file $\to$ the most commonly desired ".pdf".\\
+% In an open terminal simply type the following:\\
+% 'pdflatex you\_file\_name.tex' and within the current
+% working directory '.pdf' file will be created.\\
+
+% Linking '.bib' files take alittle more work. I will
+% explain the steps as follows for a file named 
+% blah.tex. \\ 
+
+% If you have not already done so, change the current
+% directory of terminal to that which contains blah.tex
+% as well as another file created by you called blah.bib.
+% As long as there are not any errors within you latex
+% code 4 commands make this possible:\\
+% pdflatex blah.tex \\
+% bibtex blah.aux \\
+% pdflatex blah.tex \\
+% pdflatex blah.tex\\
+
+% It is important to execute the pdflatex command twice
+% after bibtex blah.aux has been run.
+% This will created your desired pdf-file with an added
+% references section (assuming you have entries in the
+% .bib file). The last section of this document will 
+% contain more information about bibliographies. \\
+
+
+% %----------------------------------------------------------------------
+% % At least 3 Document Class explanations
+% \section{Document Classes} 
+% The \textbf{Preamble} in a \LaTeX{} 
+% document is defined as the area prior to any invocation of 
+% begin/end \{document\} tags. This space is used to define the 
+% type of document class you will be using, the page layout desired,
+% and user defined commands.\\ 
+
+% % Visual of where the preamble is in latex document
+% \framebox{
+% \parbox[t][3.0cm]{5.50cm}{
+% \addvspace{0.2cm} \centering 
+% \framebox{
+% \parbox[t][1.0cm]{4.50cm}{
+% \addvspace{0.2cm} \centering 
+% \textbig{THE}  \textbig{PREAMBLE} \\
+% } 
+% }\\
+% \textbf{ \textbackslash{begin}\{document\}} \\ 
+% \textbf{ \vdots }  \\
+% \textbf{ \textbackslash{end}\{document\} }
+% } 
+% }\\
+
+% This is where your \textit{Document type} is to be defined. \\
+
+% \textbf{Types of Document Classes}\\
+% There are nine main \LaTeX{} defined textit{Document Classes}.
+% They are as follows: \\
+% {\color{blue} \textbf{article}},
+% {\color{blue} \textbf{IEEEtran}},
+% {\color{blue} \textbf{proc}},
+% {\color{blue} \textbf{report}}, 
+% {\color{blue} \textbf{book}}, 
+% {\color{blue} \textbf{slides}}, 
+% {\color{blue} \textbf{memior}}, 
+% {\color{blue} \textbf{letter}}, and 
+% {\color{blue} \textbf{beamer}}.\\
+
+% In order to use these one of these \textit{Document Classes} one must
+% use the following command: 
+% \textbackslash{documentclass\{Document-Class\}}. \\ 
+% where \textit{Document-class} must be replaced with one of the nine
+% blue labeled document classes (show above). \\
+% Each of these have their own unique advantages and one package may
+% be already optimized for your particular use, but to use any of these 
+% environments they must be placed with-in the \textbf{preamble} 
+% of your document. \\
+
+% % The \textbf{Preamble} in a \LaTeX{} 
+% % document is defined as the area prior to any invocation of 
+% % begin/end \{document\} tags. This space is used to define the 
+% % type of document class you will be using, the page layout desired,
+% % and user defined commands.\\ 
+
+% %This is where your ~\textit{Document type} is to be defined.
+
+
+% % The \textbf{preamble} is defined
+% % as the area before you have started your document. That is done 
+% % using begin and end document commands. \\
+
+% %\textbackslash{begin\{ document \}}.
+% %----------------------------------------------------------------------
+% % Define article: 
+% % a piece of writing included with others in a newspaper, magazine, or 
+% % other publication
+% \subsection{Article}
+% %description:
+% \begin{itemize}
+%    \item \textbf{Description:}
+%       \begin{itemize}[label={}]
+%          \item Quite possibly the most popular \LaTeX{} class used is 
+%          textbf{article}. 
+%          \item It is mainly used for short documents and 
+%          journal articles it can also be used for the following: 
+%          articles in scientific journals, presentations, short reports,
+%          program documentation, invitations, homework, note-taking, 
+%          and many more.
+%       \end{itemize}
+%    \item \textbf{Commands:}
+%       \begin{itemize}[label={}]
+%       \item \textbackslash{part\{\}}
+%       \item \textbackslash{chapter\{\}}
+%       \item \textbackslash{section\{\}}
+%       \item \textbackslash{paragraph\{\}} 
+%       \item \textbackslash{subsection\{\}}
+%       \end{itemize} ~\cite{latex_wikia}
+% %How to use:
+%    \item \textbf{How to use:}
+%       \begin{itemize}
+%       \item To use this particular document class within your \LaTeX{} 
+%        document, the \textbackslash{documentclass\{article\}} in the 
+%        area defined as the preamble.
+%       \end{itemize}
+% \end{itemize}
+% %----------------------------------------------------------------------
+% ~\cite{gmurray_sbalemi}
+% \subsection{IEEEtran} 
+% %description:
+% \begin{itemize}
+%    \item \textbf{Description:}
+%       \begin{itemize}
+%       \item Institute of Electrical and Electronics Engineers (IEEE)
+%       transactions journals and conferences is what is meant by 
+%       by IEEEtran document class name. This document class is 
+%       particularly useful for (IEEE) authors and has many useful
+%       commands and layout required by this organization.
+%       \end{itemize}
+%    \item \textbf{Commands:}
+%       \begin{itemize}[label={}]
+%       \item \textbackslash{thanks\{\}}
+%       \item \textbackslash{abstract\{\}}
+%       \item \textbackslash{bibliography\{\}}
+%       \item \textbackslash{Theorem\{\}} 
+%       \item \textbackslash{cite\{\}}  
+%       \end{itemize}
+% %How to use:
+%    \item \textbf{How to use:}
+%       \begin{itemize}
+%       \item To use this particular document class within your \LaTeX{} 
+%        document, the \textbackslash{documentclass\{IEEEtran\}} in the 
+%        area defined as the preamble.
+%       \end{itemize}
+% \end{itemize}
+% %----------------------------------------------------------------------
+
+% %----------------------------------------------------------------------
+% \subsection{book}
+% %description:
+% \begin{itemize}
+%    \item \textbf{Description of Book:}
+%       \begin{itemize}
+%       \item The structure of this document class
+%       contains "chapter" which a header 
+%       automatically made with pages and the name
+%       of section on odd pages. Pages are always
+%       2-sided by default.  
+%       \end{itemize}
+%    \item \textbf{Commands:}
+%       \begin{itemize}[label={}]
+%       \item \textbackslash{part\{\}}
+%       \item \textbackslash{chapter\{\}}
+%       \item \textbackslash{section\{\}}
+%       \item \textbackslash{paragraph\{\}} ~\cite{latex_wikia}
+%       \item \textbackslash{subsection\{\}}  
+%       \end{itemize}
+% %How to use:
+%    \item \textbf{How to use:}
+%       \begin{itemize}
+%       \item To use this particular document class within your \LaTeX{} 
+%        document, the \textbackslash{documentclass\{book\}} in the area
+%        defined as the preamble.
+%       \end{itemize}
+% \end{itemize}
+% %----------------------------------------------------------------------
+
+
+% %----------------------------------------------------------------------
+% % Go beyond what was discussed in class
+% \section{Title, Listing Multiple \\ Authors and Affiliations}
+
+% Titles in \LaTeX{} can be made using \textbackslash{maketitle} or
+% by using the \textbf{titlepage} environment. As a little example,
+% here is the code I wrote to make the title of this document:\\
+
+% \flushleft{\textbackslash{title}\{Basic\textbackslash{LaTeX\{\}}: Features Explained \} 
+% \textbackslash \textbackslash }\\
+% \textbackslash{author} \{ James M. Vrionis \textbackslash \textbackslash \\
+%          CMPS-185, \textbackslash \textbackslash \\
+%          University of California, Santa Cruz \textbackslash \textbackslash \\
+%       \} \textbackslash \textbackslash \\
+% \textbackslash{maketitle}\\
+
+% My title was set up completely using the 
+% \textbf{maketitle} as you can see
+% it outputs a very professional title.
+
+
+% \subsection{Title}
+% Titles in \LaTeX{} can be made using \textbackslash{maketitle} or
+% by using the \textbf{titlepage} environment. As a little example,
+% here is the code I wrote to make the title of this document:\\
+
+% \textbackslash{title}\{Basic \textbackslash{LaTeX\{\}}: Features Explained \} 
+% \textbackslash \textbackslash \\
+% \textbackslash{author} \{ James M. Vrionis \textbackslash \textbackslash \\
+%          CMPS-185, \textbackslash \textbackslash \\
+%          University of California, Santa Cruz \textbackslash \textbackslash \\
+%       \} \textbackslash \textbackslash \\
+% \textbackslash{maketitle}\\
+
+% This code would be placed imediately after \textbackslash{begin\{document\}}.
+
+% \subsubsection{Title Page}
+% Another way to accomplish a \textbf{title} 
+% would be to make a \textbf{title page}. 
+% Another example should make the use of this clearer,
+% so first we need to define attributes within the
+% preamble portion of your document.\\ 
+
+% \textbackslash{title}{Basic \textbackslash{LaTeX\{\}}: Features Explained} \\
+% \textbackslash{author}James M. Vrionis \thanks{Inpired by CMPS-185} \\
+% \textbackslash{date}{January 27,  2018} \\
+
+% Next, imediately after our \textbackslash{begin}document tag 
+% we can put the do the following: 
+
+% % Visual of where the preamble is in latex document
+% \framebox{
+% \parbox[t][6.0cm]{5.50cm}{
+% \addvspace{0.3cm} \centering 
+% \framebox{
+% \parbox[t][3.50cm]{4.50cm}{
+% \addvspace{0.2cm} \centering 
+% \textbackslash{title}\{Basic \textbackslash{LaTeX\{\}}: Features Explained\} \\
+% \textbackslash{author}\{James M. Vrionis \textbackslash{thanks}\{Inpired by CMPS-185\}\} \\
+% \textbackslash{date}\{January 27,  2018\} \\
+% } 
+% }\\
+% \textbf{ \textbackslash{begin}\{document\}} \\ 
+% \textbackslash{begin}\{titlepage\}  \\
+% \textbackslash{maketitle}\\
+% \textbf{ \textbackslash{end}\{titlepage\} }
+% } 
+% }\\
+
+% All attributes of the \textbf{Title} should be defined 
+% within the preamble and like we have seen before 
+
+
+% \subsection{Multiple Authors and Affiliations}
+% To list multiple Authors and Affiliations the 
+% \textbackslash{author} command will suffice.
+% Let me show you another nice example of how this 
+% can be accomplished: \\
+
+% \textbackslash{author}\{ \\
+%    Author 1 \textbackslash \textbackslash \textbackslash \\
+%    Company or School \textbackslash \textbackslash \\
+%    $\cdots$ etc. $\cdots$ \textbackslash \textbackslash \\
+%    \textbackslash{and} \\
+%    Author 2 \textbackslash{thanks{$\cdots$}} \textbackslash \textbackslash \\
+%    $\cdots$ etc. $\cdots$ \textbackslash \textbackslash \\
+%    \} \\
+% \textbackslash{date} \textbackslash \textbackslash \\
+% \textbackslash{maketitle} \\
+
+% %----------------------------------------------------------------------
+
+
+% %----------------------------------------------------------------------
+% \section{Sections}
+% These are the \LaTeX{} commands very specific to the organization 
+% of document types. A section creates a numbered title above text 
+% its associated block of material. The numbering system is set by 
+% default but is easily turned off by placing an asterisk before the 
+% first opening curly brace. \footnote{ Using the asterisk will remove 
+% this section from a Table of Contents and you must re-add, 
+% via \textbackslash{addcontentsline} placed to the right of  
+% \textbackslash{section}$\asterisk$\{SoMe\_SecTioN\} \\
+
+
+% By default, sections are numbered and in bold font. Say we are looking
+% some text and we come across bolded text \textbf{5 Sections} above the 
+% text we are reading, which means section 5 of our text and
+% anything below it, whether it be a subsection, subsubsection or 
+% paragraph should be related to this main idea.
+
+
+% \framebox{
+% \parbox[c][7.50cm]{5.50cm}{
+% \begin{itemize}[label={}]
+%    \item \textbf{Section 1}
+%    \begin{itemize}[label={}]   
+%       \item Paragraphs
+%       \item Subsection 1
+%       \begin{itemize}[label={}]
+%          \item Paragraphs
+%          \item Sub-subsection 1 
+%          \begin{itemize}[label={}]
+%             \item Paragraphs
+%          \end{itemize}
+%          \item Sub-subsection 2 
+%          \begin{itemize}[label={}]
+%             \item Paragraphs
+%          \end{itemize}
+%       \end{itemize}
+%       \item Subsection 2
+%    \end{itemize}
+%    \item \textbf{Section 2}
+% \end{itemize}
+% } 
+% }\\
+
+% and so on...\\ 
+
+% \textbackslash{section}\{ \textcolor{blue}{Title of Section\}}} \\
+
+% \subsection{Subsections}
+% A \textbf{\textbackslash{\{subsection\}}} is a child of its 
+% parent section. If you are in section 4.0, the following 
+% subsections would be 4.1, 4.2,..., 4.x where x can be a any 
+% number larger than its predecessor.  \\
+
+% If you are in section 5.0, the following subsections would be 
+% 5.1, 5.2,...,5. {\color{blue} x} where {\color{blue} x} can be any 
+% number larger than its predecessor. An easy interpretation would be 
+% {\color{red} Section}.{\color{blue} Subsection}\\
+
+% \subsection{Sub-subsections}
+% A \textbf{\textbackslash{\{subsubsection\}}} is the grandchild its some 
+% preceding parent section. 5.1.1 would read: section 5, subsection 1 
+% of subsubsection 1. Possible sub-subsections are 
+% 5.1.1, 5.1.2, ...,5.1.{\color{DarkGreen}x}, with {\color{DarkGreen}x} to any 
+% number larger than its predecessor.\\ 
+% An easy interpretation would be {\color{red} Section}.
+% {\color{blue} Subsection}.{\color{DarkGreen} Sub-subsection}\\
+
+% \subsection{Paragraphs} ~\cite{latex_wikia} 
+% When using the \textbf{\textbackslash{begin}\{paragraph\}} 
+% command text is broken down into lines, 
+% and lines are broken down into pages. To end a 
+% paragraph there must be one or more blank lines 
+% following the text inside the paragraph.\\ 
+
+% Your text should take place of the vertical dots.\\
+% % Visual of where the preamble is in latex document
+% \framebox{
+%     \parbox[c][2.0cm]{3.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         \textbf{\textbackslash{begin}\{paragraph\}}\\ 
+%         \textbf{  \vdots}\\
+%         \textbf{\textbackslash{end}\{paragraph\}}
+%     } 
+% }\\
+
+% \subsection{Labeling} ~\cite{wiki_books_labels_cross}
+% Labels in \LaTeX{} are references to previous place in your 
+% document enabling a much better way to point back to previous 
+% marked objects. \\
+
+% Objects are marked with \textbackslash{label}\{ some\_name \} 
+% and can be retrieved using \textbackslash{ref}\{ some\_name \} 
+% command. \\ 
+
+% \framebox{
+%     \parbox[c][3.0cm]{4.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         \textbackslash{\{section\}}
+%         \textbf{\textbackslash{label\{\textcolor{red}{labbbel}\}}}\\ 
+%         \textbf{ \vdots }\\
+%         \textbf{\textbackslash{ref\{\textcolor{red}{labbbel}\}}}
+%     } 
+% }\\
+
+% %----------------------------------------------------------------------
+
+
+% %----------------------------------------------------------------------
+% % Describe at least three environments including tabular
+% % Computer code, no matter what special characters it has, may be 
+% % listed with the verbatim environment:
+% \section{Environments} ~\cite{wiki_tables}
+% \LaTeX{} comes equipt with many different environments. Three 
+% environments we will look at are {\color{blue}\textbf{Tabular}},
+% {\color{blue}\textbf{Itemize/Enumerate}}, and 
+% {\color{blue}\textbf{Description}}. ~\cite{wiki_tables} \\
+
+% \subsection{Tabular} 
+% \textbf{Tabular} is an allignment environment with vertical
+% and horizontal line separating capabilities. When one or both 
+% of these capabilities are enabled many different arrangements
+% become available with different column orientations, justifactions,
+% and unique line drawing instructions. ~\cite{aj_roberts}\\
+% \mbox{}\\
+% \mbox{}\\
+% \textbf{Syntax:}\\  
+% \textbackslash{begin}\{tabular\}[pos]\{table spec\} \\
+%     \textbackslash{begin}\{tabular\} \{\textcolor{red}{A}\}\\
+%         \&  \&  \textbackslash\textbackslash \\
+%     \textcolor{blue}{B}    \&  \&  \textbackslash\textbackslash \\
+%         \&  \&  \textbackslash\textbackslash \\
+%     \textbackslash{end}\{tabular\}\\
+    
+%     \begin{enumerate}[label={\Alph*}]
+%         \textcolor{red}{\item Here we have a place to define columns.}
+%         \begin{itemize}[label={}]
+%             \item l for left-justified 
+%             \item c for centered
+%             \item r for right-justified
+%         \end{itemize}
+%         \textcolor{blue}{\item Here we have the number of entries in the table.}
+%     \end{enumerate}
+
+% %---------------------------------------------------0
+% % Examples.. 
+% %---------------------------------------------------0
+% \framebox{
+%     \parbox[c][15.5cm]{9.50cm}{
+%         %\addvspace{0.2cm} 
+%         \centering
+%         \textbf{No line Example:} \\ 
+%         %\mbox{}\\
+
+%         \begin{tabular}{l c r}
+%         \mbox{this is}&\mbox{ table using} &\mbox{ mbox}\\
+%         \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+%         \mbox{using }&\mbox{ tabular }&\mbox{ envir }\\
+%         \end{tabular}\\
+%         \mbox{}\\
+%         \mbox{}\\
+
+%         \textbf{Same example but with an added $|$: }\\
+%         \mbox{}\\
+
+%         \begin{tabular}{l | c r}
+%         \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\
+%         \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+%         \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+%         \end{tabular}\\ 
+%         \mbox{}\\
+%         \mbox{}\\
+
+%         \textbf{Added another $|$ to previous:} \\
+%         \mbox{}\\
+
+%         \begin{tabular}{l | c | r}
+%         \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\
+%         \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+%         \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+%         \end{tabular}\\ 
+%         \mbox{}\\
+%         \mbox{}\\
+
+
+%         \textbf{Adding a \textbackslash{hline} to previous}: \\
+%         \mbox{}\\
+
+%         \begin{tabular}{l | c | r}
+%         \hline
+%         \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\
+%         \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+%         \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+%         \end{tabular}\\ 
+%         \mbox{}\\
+%         \mbox{}\\
+
+%         \textbf{Added another \textbackslash{hline} to previous:} \\
+%         \mbox{}\\
+
+%         \begin{tabular}{l | c | r}
+%         \hline
+%         \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\ \hline
+%         \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+%         \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+%         \end{tabular}\\  
+%         \mbox{}\\
+%         \mbox{}\\
+%     } 
+% }\\
+% %----------------------------------------------------------------------
+
+
+
+% %----------------------------------------------------------------------
+% %\newpage
+% \subsection{Itemize and Enumerate}
+% \textbf{itemize} is unordered list making environment whereas
+% the \textbf{Enumerate} environment is numerically ordered.\\
+% \framebox{
+%     \parbox[c][3.0cm]{4.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         \textbf{\textbackslash{begin}\{{itemize}\}}\\ 
+%         \par \textbackslash{item} "Text goes here" \\
+%         \textbf{ \vdots }\\
+%         \textbf{\textbackslash{end}\{{itemize}\}}
+%     } 
+% }\\
+
+% \framebox{
+%     \parbox[c][3.0cm]{4.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         \textbf{\textbackslash{begin}\{{enumerate}\}}\\ 
+%             \par \textbackslash{item} "Text goes here" \\
+%         \textbf{ \vdots }\\
+%         \textbf{\textbackslash{end}\{{enumerate}\}}
+%     } 
+% }\\
+
+
+% \subsection{Description}
+% \textbf{Description} is an ideal list making environment for definitions.
+
+% \framebox{
+%     \parbox[c][3.0cm]{4.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         \textbackslash{begin}\{description\}
+%         \textbackslash{item}[\textbf{Word}] \\
+%             \par Here is the definition\\
+%         \textbackslash{item}[\textbf{Word2}] \\
+%             \par Here is the definition 2 \\
+%         \textbackslash{end}\{description\}        
+%     } 
+% }\\
+
+% %----------------------------------------------------------------------
+% \section{Mathematical Formulas}
+
+% \LaTeX{} has many different ways to write mathematical expressions. 
+% Using either \textbf{inline} or one of the many different 
+% \textit{display} modes. Displays are separate from paragraphs and 
+% used as its own code block whereas inline expressions can be used
+% with-in writing environments. \\
+
+% \begin{itemize}[label={}]
+%     \item \textbf{Inline:}
+%     \begin{itemize}[label={\bullet}]
+%          \item  \mbox{\$ math equation inline \$}
+%          \item  \textbackslash{[ math equation inline }\textbackslash{]}
+%          \item  \textbackslash{( math equation inline }\textbackslash{)}
+%     \end{itemize}
+%     \item \textbf{Display:}
+%     \begin{itemize}[label={\bullet}]
+%          \item \textbackslash{begin}\{equation\} \textbackslash{end}\{equation\}
+%          \item \textbackslash{begin}\{displaymath\} \textbackslash{end}\{displaymath\}
+%     \end{itemize}
+% \end{itemize}\\
+% \textbf{inline vs display mode:}\\
+% \begin{equation}
+%     \mbox{\textbackslash{begin}\{equation\}}
+%     \sum_{i=0}^{\infty} \frac{n}{n+1}
+%     \mbox{  \textbackslash{end}\{equation\}}    
+% \end{equation}
+% vs.
+% This is inline: $\sum_{i=0}^{\infty} \frac{n}{n+1}$ \footnote{for inline place sound eq. in \$ \$} \\ 
+
+% \textbf{code}: \\
+% \textbackslash{sum}\_\{$i=0$\}\^\{\textbackslash{infty}\} \textbackslash{frac}\{$n$\}\{$n+1$\} \\
+
+
+% %----------------------------------------------------------------------
+
+
+
+% %---------------------------------------------------------------------- 
+% \section{User-defined macros} ~\cite{uhedu_macros}
+
+% Creating your own \textit{commands} via chaining together different
+% commands. The definition of which, must be in the preamble section 
+% of your \textbf{.tex} file. \\
+% Another possible use would be to redefine an command already
+% defined by latex. This may lead to serious problems unlike our final
+% safer \textit{provide command} that defines the command 
+% if and only if (IFF) the command doesn't exist, otherwise no 
+% meaning is changed. 
+
+
+% \subsection{New Commands}
+
+% % \newcommand\DALGORITHM{\vspace{.10in}\textbf{Description of Algorithm: }}
+% % \newcommand\PCORRECT{\vspace{.10in}\textbf{Proof of Correctness: }}
+% % \newcommand\TIME{\vspace{.10in}\textbf{Analysis of Time: }}
+% % \newcommand\SPACE{\vspace{.10in}\textbf{Analysis of Space: }}
+
+% \textbackslash{newcommand}\textbackslash{DALGO}\{\textbackslash{vspace}\{.10in\}
+% \textbackslash{textbf}\{Discription of Algorithm:\}\} \\
+
+% I made this simple example while in cmps\-102 class. 
+% The \textbf{new command} defined here is \textbackslash{DALGO}. \\
+% \begin{itemize}
+%     \item \textbackslash{DALGO} produces the text "Discription of Algorithm:"
+%     \item \textbackslash{newcommand} says we are creating a new command, 
+%     \item \textbackslash{DALGO} named "DALGO",
+%     \item \textbackslash{vspace}\{.10in\} .10inches 
+%             of vertical space between this command 
+%             and anything follwing an instance of 
+%             \textbackslash{DALGO},
+%     \item \{Discription of Algorithm:\} which prints "Discription of Algorithm: 
+% \end{itemize}
+
+% This can be really useful when using the same material over and 
+% over again. \LaTeX{} also gives users the ability to redefine 
+% existing commands via the \textbackslash{renewcommand}.
+% An example of how this can be accomplished is as follows: \\
+
+% Original command is \textbackslash{part\{a\}}. the output of the 
+% unmodified command is\\ \textbf{Part I}\\ \textbf{a}\\
+% Now, our after redefining this command we get the following 
+% output:
+% \part{a} "with text capabilities" imediately following the 
+% command.  \\
+
+% \framebox{
+%     \parbox[c][3.0cm]{4.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         \textbf{Original Command }\\
+%         \textbackslash{part\{a\}} 
+%         \textit{with output }\\
+%         {\color{red}\textbf{Part I}\\ \textbf{a}}\\      
+%     } 
+% }\\
+
+% Now, our after redefining this command we get the following 
+% output:
+% \framebox{
+%     \parbox[c][3.0cm]{4.50cm}{
+%         \addvspace{0.2cm} \centering 
+%         {\color{red}\part{a} "with text capabilities" imediately following the 
+%         command.}  \\
+%     } 
+% }\\
+
+% \textbackslash{providecommand}\{\}\{\} which is similiar to 
+% \textbackslash{newcommand}\{\}\{\} without a generated 
+% error message for the existence of a command. \\ 
+
+
+% \textbackslash{renewcommand}\textbackslash{\text{part[1]}}\\
+% \{\textbackslash{vspace}\{.10in\} \\ 
+% \textbackslash{textbf}\{\text{(\#1)}\}\} \\
+
+% %----------------------------------------------------------------------
+% \section{NFA's and DFA's}
+% Ofcoase!! \LaTeX{} has an library for almost everything. The specific
+% library needed to draw Finite State Machines (FSM) is the 
+% \textit{tike\-automata} library. Just like we have been doing, 
+% \textbackslash{usepackage}\{tikz\} must be defined in the preamble.
+% Now, for the correct positioning and arrows to show direction we must
+% also use the \textbackslash{usetikzlibrary}\{automata, positioning, arrows\}.\\
+% Nodes are what we are going to be working with, so we want to connect
+% these nodes in such a way that we get some FSM. Here is a Deterministic
+% Finite Automata for some fun:
+% \begin{tikzpicture}
+%     \node[state, initial] (q1) {$q_1$};
+%     \node[state, accepting, right of=q1] (q2) {$q_2$};
+%     \node[state, right of=q2] (q3) {$q_3$};
+%     \node[state, accepting, right of=q3] (q4) {$q_4$};
+
+%     \draw  (q1) edge[loop above] node{0} (q1)
+%            (q1) edge[above] node{1} (q2)
+%            (q2) edge[loop above] node{1} (q2)
+%            (q2) edge[bend left, above] node{0}  (q3)
+%            (q3) edge[loop above] node{2} (q3)
+%            (q3) edge[bend left, above] node{0}  (q4)
+%            (q4) edge[bend left, below] node{0,1} (q3);
+% \end{tikzpicture}
+% \cite{gtikz} \\
+
+% Here is code used:  \\
+% \textbackslash{begin}\{tikzpicture\} \\
+%     \textbackslash{node}[state, initial] (q1) \{\$q_1\$\}; \\
+%     \textbackslash{node}[state, accepting,right of q1] (q2) \{\$q_2\$\}; \\
+%     \textbackslash{node}[state, accepting,right of q1] (q2) \{\$q_2\$\}; \\
+%     \textbackslash{node}[state, right of q2] (q3) \{\$q_3\$\}; \\
+%     \textbackslash{node}[state, accepting,right of q3] (q4) \{\$q_4\$\}; \\
+%     \textbackslash{draw}   (q1) edge[loop above] node{0} (q1) \\
+%                            (q1) edge[above] node\{1\} (q2) \\
+%                            (q2) edge[loop above] node\{1\} (q2) \\
+%                            (q2) edge[bend left, above] node\{0\}  (q3) \\
+%                            (q3) edge[loop above] node\{2\} (q3) \\
+%                            (q3) edge[bend left, above] node\{0\}  (q4) \\
+%                            (q4) edge[bend left, below] node\{0,1\} (q3); \\
+% \textbackslash{end}\{tikzpicture\}  \\
+
+
+% \section{Bibliography} ~\cite{tugorg}
+% The ability to cite different sources, inspirations and influence can
+% be very important if you want to be respected in your field. \\
+
+% Ofcoarse, \LaTeX{} does have a bibliography environment 
+% called "the bibliography" but after doing much research it
+% is much more flexable to create a .bib file, also known as
+% a \BibTex{} file that can dynamically recieve entries, after
+% we identify the type of source we are referencing. 
+% ~\cite{wiki_title_maker}
+
+% All references must begin with a "@" followed by type of reference.
+% There are many different types of predefined \textit{standard templates}.
+% To list a few: @book\{ \}, @article\{ \}, and @misc\{ \}. \\
+
+% These are the entries in your .bib file that you will be inserting
+% in-between \textbackslash{begin}\{thebibliography\} and 
+% \textbackslash{end}\{thebibliography\}. \\
+% Lastly, for \LaTeX{} to be able to find your .bib file, 
+% the following two lines of code 
+% should be placed within you .tex file preceding \textbackslash{end}\{document\}:
+% \textbackslash{bibliography}\{ \textbf{path\_to\_your\_.bib}\} and
+% \textbackslash{bibliographystyle}\{ \textbf{plain} \}. 
+% Now, in order to cite your source within your article this command should follow
+% any instance of anothers work \textbackslash{cite}\{ref1,ref2,$\dots$,refn\}.
+
+
+
+
+% %\bibliographystyle{plain}
+% \bibliographystyle{IEEEtran}
+% %\bibliographystyle{plainnat}
+% \bibliography{LaTeX_tutorial}
+% \end{document}
+
+%---------------------- begin preamble ----------------------
+% Modify the article document class, so that it 
+%  produces two columns per page in 11pt
+\documentclass[11pt,twocolumn]{article}
+%\usepackage{times}
+\usepackage[square]{natbib} 
+\usepackage{enumitem, amsmath,amssymb,amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{url, hyperref} 
+\usepackage{fullpage}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+
+%ceated during my cmps102  class.
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\DALGORITHM{\vspace{.10in}\textbf{Description of Algorithm: }}
+\newcommand\PCORRECT{\vspace{.10in}\textbf{Proof of Correctness: }}
+\newcommand\TIME{\vspace{.10in}\textbf{Analysis of Time: }}
+\newcommand\SPACE{\vspace{.10in}\textbf{Analysis of Space: }}
+
+%----------------------------------------------------------------------
+% 5-7pgs
+%
+% Document classes (describe at least three).
+% How to make a title and a list of authors and their affiliations
+% (this should go beyond what was discussed in class).
+% Sections, subsections, sub-subsections, paragraphs, and their 
+%  labeling.
+% Environments, including the tabular environment (describe at 
+%  least three environments).
+% Mathematical formulas.
+% User-defined macros (give at least three interesting examples, all 
+%  different from the ones discussed in class).
+% Bibliography and citation.
+% At least one additional feature of LATEX that you find worth 
+%  including in your tutorial (e.g.,creating figures, graphing data, 
+%  making an index for a thesis or book).
+%
+% Your document should contain a bibliography listing a few 
+%  references with information about
+%----------------------------------------------------------------------
+
+%----------------------- end preamble -----------------------
+\begin{document}
+\title{Basic \LaTeX{}: Features Explained} \\
+\author{James M. Vrionis\\
+        CMPS-185 \\
+        University of California, Santa Cruz
+        \date{1-26-2018} 
+        %\texttt{}
+       }
+\maketitle 
+
+%----------------------------------------------------------------------
+~\cite{wiki_tables}
+
+\section{Introduction} 
+Pronounced either LAH-tek or LAY-tek, 
+\LaTeX{} is a \textit{free} typesetting language 
+developed by \textit{Leslie Lamport}  
+based on \textit{Donald E. Knuth's}  
+\TeX{}.\\
+
+Markup Language Key Features: ~\cite{rjgunning_gunning_2015} 
+\begin{itemize}[label={}]
+   \item Typesetting journal articles.
+   \item Technical reports. 
+   \item Bibliographies and indexes.
+   \item and many more.
+\end{itemize}
+
+\section{Install}
+\subsubsection{Ubuntu Linux}
+Open Terminal to install \textbf{TEX LIVE} via the \textit{apt-get}
+command: \\
+% Visual of where the preamble is in latex document
+\framebox{
+\parbox[l][1.50cm]{6.0cm}{
+\addvspace{0.2cm} \centering 
+\textit{sudo apt-get install texlive-full} \\
+} 
+}\\
+
+\textit{NOTE: it's always good to perform a} 
+\textbf{"sudo apt-get upgrade \&\& sudo apt-get update"} 
+\textit{before installing anything new.}\\
+
+now ".tex files" can be compiled using the pdflatex $<$your file$>$.tex
+as long as you in the same directory as the file. \\
+
+
+\begin{center}
+Alternatively, you may install from the link below \\
+\textittt{http://www.tug.org/texlive/}\\
+\end{center}
+
+\subsubsection{MacOS}
+Open Terminal to install \MacTeX{} using \textit{Homebrew Cast}.\\
+
+\framebox{
+\parbox[l][2.50cm]{6.5cm}{
+\addvspace{0.2cm} \centering 
+\textit{macbk-usr\$ brew tap caskromm/cask} \\
+\textit{macbk-usr\$ brew cask install mactex} \\
+} 
+}\\
+
+now ".tex files" can be compiled using the pdflatex $<$your file$>$.tex
+as long as you in the same directory as the file.\\
+
+\begin{center}
+Alternatively, you may install from the link below \\
+\textittt{http://www.tug.org/mactex/}\\
+\end{center}
+
+\subsubsection{Windows}
+To install and use a \LaTeX{} distribution on Windows 
+operating system one should install \textbf{\TeX{} Live} 
+via the installer.\\
+
+
+\begin{center}
+\textbf{Install via link below}\\
+\texittt{http://www.tug.org/texlive/} 
+\end{center}
+
+
+\section{Compilation}
+
+All three Operating Systems have very similar terminal
+command line arguments necessary to compile you ".tex"
+file $\to$ the most commonly desired ".pdf".\\
+In an open terminal simply type the following:\\
+'pdflatex you\_file\_name.tex' and within the current
+working directory '.pdf' file will be created.\\
+
+Linking '.bib' files take a little more work. I will
+explain the steps as follows for a file named 
+blah.tex. \\ 
+
+If you have not already done so, change the current
+directory of terminal to that which contains blah.tex
+as well as another file created by you called blah.bib.
+As long as there are not any errors within your latex
+code 4 commands make this possible:\\
+pdflatex blah.tex \\
+bibtex blah.aux \\
+pdflatex blah.tex \\
+pdflatex blah.tex\\
+
+It is important to execute the pdflatex command twice
+after bibtex blah.aux has been run.
+This will create your desired pdf-file with an added
+references section (assuming you have entries in the
+.bib file). The last section of this document will 
+contain more information about bibliographies. \\
+
+
+%----------------------------------------------------------------------
+% At least 3 Document Class explanations
+\section{Document Classes} 
+The \textbf{Preamble} in a \LaTeX{} 
+document is defined as the area prior to any invocation of 
+begin/end \{document\} tags. This space is used to define the 
+type of document class you will be using, the page layout desired,
+and user defined commands.\\ 
+
+% Visual of where the preamble is in latex document
+\framebox{
+\parbox[t][3.0cm]{5.50cm}{
+\addvspace{0.2cm} \centering 
+\framebox{
+\parbox[t][1.0cm]{4.50cm}{
+\addvspace{0.2cm} \centering 
+\textbig{THE}  \textbig{PREAMBLE} \\
+} 
+}\\
+\textbf{ \textbackslash{begin}\{document\}} \\ 
+\textbf{ \vdots }  \\
+\textbf{ \textbackslash{end}\{document\} }
+} 
+}\\
+
+This is where your \textit{Document type} is to be defined. \\
+
+\textbf{Types of Document Classes}\\
+There are nine main \LaTeX{} defined textit{Document Classes}.
+They are as follows: \\
+{\color{blue} \textbf{article}},
+{\color{blue} \textbf{IEEEtran}},
+{\color{blue} \textbf{proc}},
+{\color{blue} \textbf{report}}, 
+{\color{blue} \textbf{book}}, 
+{\color{blue} \textbf{slides}}, 
+{\color{blue} \textbf{memior}}, 
+{\color{blue} \textbf{letter}}, and 
+{\color{blue} \textbf{beamer}}.\\
+
+In order to use these one of these \textit{Document Classes} one must
+use the following command: 
+\textbackslash{documentclass\{Document-Class\}}. \\ 
+where \textit{Document-class} must be replaced with one of the nine
+blue labeled document classes (show above). \\
+Each of these have their own unique advantages and one package may
+be already optimized for your particular use, but to use any of these 
+environments they must be placed with-in the \textbf{preamble} 
+of your document. \\
+
+% The \textbf{Preamble} in a \LaTeX{} 
+% document is defined as the area prior to any invocation of 
+% begin/end \{document\} tags. This space is used to define the 
+% type of document class you will be using, the page layout desired,
+% and user defined commands.\\ 
+
+%This is where your ~\textit{Document type} is to be defined.
+
+
+% The \textbf{preamble} is defined
+% as the area before you have started your document. That is done 
+% using begin and end document commands. \\
+
+%\textbackslash{begin\{ document \}}.
+%----------------------------------------------------------------------
+% Define article: 
+% a piece of writing included with others in a newspaper, magazine, or 
+% other publication
+\subsection{Article}
+%description:
+\begin{itemize}
+   \item \textbf{Description:}
+      \begin{itemize}[label={}]
+         \item Quite possibly the most popular \LaTeX{} class used is 
+         textbf{article}. 
+         \item It is mainly used for short documents and 
+         journal articles it can also be used for the following: 
+         articles in scientific journals, presentations, short reports,
+         program documentation, invitations, homework, note-taking, 
+         and many more.
+      \end{itemize}
+   \item \textbf{Commands:}
+      \begin{itemize}[label={}]
+      \item \textbackslash{part\{\}}
+      \item \textbackslash{chapter\{\}}
+      \item \textbackslash{section\{\}}
+      \item \textbackslash{paragraph\{\}} 
+      \item \textbackslash{subsection\{\}}
+      \end{itemize} ~\cite{latex_wikia}
+%How to use:
+   \item \textbf{How to use:}
+      \begin{itemize}
+      \item To use this particular document class within your \LaTeX{} 
+       document, the \textbackslash{documentclass\{article\}} in the 
+       area defined as the preamble.
+      \end{itemize}
+\end{itemize}
+%----------------------------------------------------------------------
+~\cite{gmurray_sbalemi}
+\subsection{IEEEtran} 
+%description:
+\begin{itemize}
+   \item \textbf{Description:}
+      \begin{itemize}
+      \item Institute of Electrical and Electronics Engineers (IEEE)
+      transactions journals and conferences are what is meant by 
+      by IEEEtran document class name. This document class is 
+      particularly useful for (IEEE) authors and has many useful
+      commands and layout required by this organization.
+      \end{itemize}
+   \item \textbf{Commands:}
+      \begin{itemize}[label={}]
+      \item \textbackslash{thanks\{\}}
+      \item \textbackslash{abstract\{\}}
+      \item \textbackslash{bibliography\{\}}
+      \item \textbackslash{Theorem\{\}} 
+      \item \textbackslash{cite\{\}}  
+      \end{itemize}
+%How to use:
+   \item \textbf{How to use:}
+      \begin{itemize}
+      \item To use this particular document class within your \LaTeX{} 
+       document, the \textbackslash{documentclass\{IEEEtran\}} in the 
+       area defined as the preamble.
+      \end{itemize}
+\end{itemize}
+%----------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+\subsection{book}
+%description:
+\begin{itemize}
+   \item \textbf{Description of Book:}
+      \begin{itemize}
+      \item The structure of this document class
+      contains "chapter" which a header 
+      automatically made with pages and the name
+      of section on odd pages. Pages are always
+      2-sided by default.  
+      \end{itemize}
+   \item \textbf{Commands:}
+      \begin{itemize}[label={}]
+      \item \textbackslash{part\{\}}
+      \item \textbackslash{chapter\{\}}
+      \item \textbackslash{section\{\}}
+      \item \textbackslash{paragraph\{\}} ~\cite{latex_wikia}
+      \item \textbackslash{subsection\{\}}  
+      \end{itemize}
+%How to use:
+   \item \textbf{How to use:}
+      \begin{itemize}
+      \item To use this particular document class within your \LaTeX{} 
+       document, the \textbackslash{documentclass\{book\}} in the area
+       defined as the preamble.
+      \end{itemize}
+\end{itemize}
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+% Go beyond what was discussed in class
+\section{Title, Listing Multiple \\ Authors and Affiliations}
+
+Titles in \LaTeX{} can be made using \textbackslash{maketitle} or
+by using the \textbf{titlepage} environment. As a little example,
+here is the code I wrote to make the title of this document:\\
+
+\flushleft{\textbackslash{title}\{Basic\textbackslash{LaTeX\{\}}: Features Explained \} 
+\textbackslash \textbackslash }\\
+\textbackslash{author} \{ James M. Vrionis \textbackslash \textbackslash \\
+         CMPS-185, \textbackslash \textbackslash \\
+         University of California, Santa Cruz \textbackslash \textbackslash \\
+      \} \textbackslash \textbackslash \\
+\textbackslash{maketitle}\\
+
+My title was set up completely using the 
+\textbf{maketitle} as you can see
+it outputs a very professional title.
+
+
+\subsection{Title}
+Titles in \LaTeX{} can be made using \textbackslash{maketitle} or
+by using the \textbf{titlepage} environment. As a little example,
+here is the code I wrote to make the title of this document:\\
+
+\textbackslash{title}\{Basic \textbackslash{LaTeX\{\}}: Features Explained \} 
+\textbackslash \textbackslash \\
+\textbackslash{author} \{ James M. Vrionis \textbackslash \textbackslash \\
+         CMPS-185, \textbackslash \textbackslash \\
+         University of California, Santa Cruz \textbackslash \textbackslash \\
+      \} \textbackslash \textbackslash \\
+\textbackslash{maketitle}\\
+
+This code would be placed immediately after \textbackslash{begin\{document\}}.
+
+\subsubsection{Title Page}
+Another way to accomplish a \textbf{title} 
+would be to make a \textbf{title page}. 
+Another example should make the use of this clearer,
+so first we need to define attributes within the
+preamble portion of your document.\\ 
+
+\textbackslash{title}{Basic \textbackslash{LaTeX\{\}}: Features Explained} \\
+\textbackslash{author}James M. Vrionis \thanks{Inspired by CMPS-185} \\
+\textbackslash{date}{January 27,  2018} \\
+
+Next, immediately after our \textbackslash{begin}document tag 
+we can put the do the following: 
+
+% Visual of where the preamble is in latex document
+\framebox{
+\parbox[t][6.0cm]{5.50cm}{
+\addvspace{0.3cm} \centering 
+\framebox{
+\parbox[t][3.50cm]{4.50cm}{
+\addvspace{0.2cm} \centering 
+\textbackslash{title}\{Basic \textbackslash{LaTeX\{\}}: Features Explained\} \\
+\textbackslash{author}\{James M. Vrionis \textbackslash{thanks}\{Inspired by CMPS-185\}\} \\
+\textbackslash{date}\{January 27,  2018\} \\
+} 
+}\\
+\textbf{ \textbackslash{begin}\{document\}} \\ 
+\textbackslash{begin}\{titlepage\}  \\
+\textbackslash{maketitle}\\
+\textbf{ \textbackslash{end}\{titlepage\} }
+} 
+}\\
+
+All attributes of the \textbf{Title} should be defined 
+within the preamble and like we have seen before 
+
+
+\subsection{Multiple Authors and Affiliations}
+To list multiple Authors and Affiliations the 
+\textbackslash{author} command will suffice.
+Let me show you another nice example of how this 
+can be accomplished: \\
+
+\textbackslash{author}\{ \\
+   Author 1 \textbackslash \textbackslash \textbackslash \\
+   Company or School \textbackslash \textbackslash \\
+   $\cdots$ etc. $\cdots$ \textbackslash \textbackslash \\
+   \textbackslash{and} \\
+   Author 2 \textbackslash{thanks{$\cdots$}} \textbackslash \textbackslash \\
+   $\cdots$ etc. $\cdots$ \textbackslash \textbackslash \\
+   \} \\
+\textbackslash{date} \textbackslash \textbackslash \\
+\textbackslash{maketitle} \\
+
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+\section{Sections}
+These are the \LaTeX{} commands very specific to the organization 
+of document types. A section creates a numbered title above text 
+its associated block of material. The numbering system is set by 
+default but is easily turned off by placing an asterisk before the 
+first opening curly brace. \footnote{ Using the asterisk will remove 
+this section from a Table of Contents and you must re-add, 
+via \textbackslash{addcontentsline} placed to the right of  
+\textbackslash{section}$\asterisk$\{SoMe\_SecTioN\} \\
+
+
+By default, sections are numbered and in bold font. Say we are looking
+some text and we come across bolded text \textbf{5 Sections} above the 
+text we are reading, which means section 5 of our text and
+anything below it, whether it be a subsection, subsubsection or 
+paragraph should be related to this main idea.
+
+
+\framebox{
+\parbox[c][7.50cm]{5.50cm}{
+\begin{itemize}[label={}]
+   \item \textbf{Section 1}
+   \begin{itemize}[label={}]   
+      \item Paragraphs
+      \item Subsection 1
+      \begin{itemize}[label={}]
+         \item Paragraphs
+         \item Sub-subsection 1 
+         \begin{itemize}[label={}]
+            \item Paragraphs
+         \end{itemize}
+         \item Sub-subsection 2 
+         \begin{itemize}[label={}]
+            \item Paragraphs
+         \end{itemize}
+      \end{itemize}
+      \item Subsection 2
+   \end{itemize}
+   \item \textbf{Section 2}
+\end{itemize}
+} 
+}\\
+
+and so on...\\ 
+
+\textbackslash{section}\{ \textcolor{blue}{Title of Section\}}} \\
+
+\subsection{Subsections}
+A \textbf{\textbackslash{\{subsection\}}} is a child of its 
+parent section. If you are in section 4.0, the following 
+subsections would be 4.1, 4.2,..., 4.x where x can be any 
+number larger than its predecessor.  \\
+
+If you are in section 5.0, the following subsections would be 
+5.1, 5.2,...,5. {\color{blue} x} where {\color{blue} x} can be any 
+number larger than its predecessor. An easy interpretation would be 
+{\color{red} Section}.{\color{blue} Subsection}\\
+
+\subsection{Sub-subsections}
+A \textbf{\textbackslash{\{subsubsection\}}} is the grandchild its some 
+preceding parent section. 5.1.1 would read: section 5, subsection 1 
+of subsubsection 1. Possible sub-subsections are 
+5.1.1, 5.1.2, ...,5.1.{\color{DarkGreen}x}, with {\color{DarkGreen}x} to any 
+number larger than its predecessor.\\ 
+An easy interpretation would be {\color{red} Section}.
+{\color{blue} Subsection}.{\color{DarkGreen} Sub-subsection}\\
+
+\subsection{Paragraphs} ~\cite{latex_wikia} 
+When using the \textbf{\textbackslash{begin}\{paragraph\}} 
+command text is broken down into lines, 
+and lines are broken down into pages. To end a 
+paragraph there must be one or more blank lines 
+following the text inside the paragraph.\\ 
+
+Your text should take place of the vertical dots.\\
+% Visual of where the preamble is in latex document
+\framebox{
+    \parbox[c][2.0cm]{3.50cm}{
+        \addvspace{0.2cm} \centering 
+        \textbf{\textbackslash{begin}\{paragraph\}}\\ 
+        \textbf{  \vdots}\\
+        \textbf{\textbackslash{end}\{paragraph\}}
+    } 
+}\\
+
+\subsection{Labeling} ~\cite{wiki_books_labels_cross}
+Labels in \LaTeX{} are references to previous place in your 
+document enabling a much better way to point back to previous 
+marked objects. \\
+
+Objects are marked with \textbackslash{label}\{ some\_name \} 
+and can be retrieved using \textbackslash{ref}\{ some\_name \} 
+command. \\ 
+
+\framebox{
+    \parbox[c][3.0cm]{4.50cm}{
+        \addvspace{0.2cm} \centering 
+        \textbackslash{\{section\}}
+        \textbf{\textbackslash{label\{\textcolor{red}{labbbel}\}}}\\ 
+        \textbf{ \vdots }\\
+        \textbf{\textbackslash{ref\{\textcolor{red}{labbbel}\}}}
+    } 
+}\\
+
+%----------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------
+% Describe at least three environments including tabular
+% Computer code, no matter what special characters it has, may be 
+% listed with the verbatim environment:
+\section{Environments} ~\cite{wiki_tables}
+\LaTeX{} comes equip with many different environments. Three 
+environments we will look at are {\color{blue}\textbf{Tabular}},
+{\color{blue}\textbf{Itemize/Enumerate}}, and 
+{\color{blue}\textbf{Description}}. ~\cite{wiki_tables} \\
+
+\subsection{Tabular} 
+\textbf{Tabular} is an alignment environment with vertical
+and horizontal line separating capabilities. When one or both 
+of these capabilities are enabled many different arrangements
+become available with different column orientations, justifications,
+and unique line drawing instructions. ~\cite{aj_roberts}\\
+\mbox{}\\
+\mbox{}\\
+\textbf{Syntax:}\\  
+\textbackslash{begin}\{tabular\}[pos]\{table spec\} \\
+    \textbackslash{begin}\{tabular\} \{\textcolor{red}{A}\}\\
+        \&  \&  \textbackslash\textbackslash \\
+    \textcolor{blue}{B}    \&  \&  \textbackslash\textbackslash \\
+        \&  \&  \textbackslash\textbackslash \\
+    \textbackslash{end}\{tabular\}\\
+    
+    \begin{enumerate}[label={\Alph*}]
+        \textcolor{red}{\item Here we have a place to define columns.}
+        \begin{itemize}[label={}]
+            \item l for left-justified 
+            \item c for centered
+            \item r for right-justified
+        \end{itemize}
+        \textcolor{blue}{\item Here we have the number of entries in the table.}
+    \end{enumerate}
+
+%---------------------------------------------------0
+% Examples.. 
+%---------------------------------------------------0
+\framebox{
+    \parbox[c][15.5cm]{9.50cm}{
+        %\addvspace{0.2cm} 
+        \centering
+        \textbf{No line Example:} \\ 
+        %\mbox{}\\
+
+        \begin{tabular}{l c r}
+        \mbox{this is}&\mbox{ table using} &\mbox{ mbox}\\
+        \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+        \mbox{using }&\mbox{ tabular }&\mbox{ envir }\\
+        \end{tabular}\\
+        \mbox{}\\
+        \mbox{}\\
+
+        \textbf{Same example but with an added $|$: }\\
+        \mbox{}\\
+
+        \begin{tabular}{l | c r}
+        \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\
+        \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+        \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+        \end{tabular}\\ 
+        \mbox{}\\
+        \mbox{}\\
+
+        \textbf{Added another $|$ to previous:} \\
+        \mbox{}\\
+
+        \begin{tabular}{l | c | r}
+        \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\
+        \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+        \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+        \end{tabular}\\ 
+        \mbox{}\\
+        \mbox{}\\
+
+
+        \textbf{Adding a \textbackslash{hline} to previous}: \\
+        \mbox{}\\
+
+        \begin{tabular}{l | c | r}
+        \hline
+        \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\
+        \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+        \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+        \end{tabular}\\ 
+        \mbox{}\\
+        \mbox{}\\
+
+        \textbf{Added another \textbackslash{hline} to previous:} \\
+        \mbox{}\\
+
+        \begin{tabular}{l | c | r}
+        \hline
+        \mbox{this is}&\mbox{ table using}&\mbox{ mbox} \\ \hline
+        \mbox{L-just col}&\mbox{ center col}&\mbox{ R-just col}\\
+        \mbox{using }&\mbox{ tabular }&\mbox{ envir } \\
+        \end{tabular}\\  
+        \mbox{}\\
+        \mbox{}\\
+    } 
+}\\
+%----------------------------------------------------------------------
+
+
+
+%----------------------------------------------------------------------
+%\newpage
+\subsection{Itemize and Enumerate}
+\textbf{itemize} is unordered list making environment whereas
+the \textbf{Enumerate} environment is numerically ordered.\\
+\framebox{
+    \parbox[c][3.0cm]{4.50cm}{
+        \addvspace{0.2cm} \centering 
+        \textbf{\textbackslash{begin}\{{itemize}\}}\\ 
+        \par \textbackslash{item} "Text goes here" \\
+        \textbf{ \vdots }\\
+        \textbf{\textbackslash{end}\{{itemize}\}}
+    } 
+}\\
+
+\framebox{
+    \parbox[c][3.0cm]{4.50cm}{
+        \addvspace{0.2cm} \centering 
+        \textbf{\textbackslash{begin}\{{enumerate}\}}\\ 
+            \par \textbackslash{item} "Text goes here" \\
+        \textbf{ \vdots }\\
+        \textbf{\textbackslash{end}\{{enumerate}\}}
+    } 
+}\\
+
+
+\subsection{Description}
+\textbf{Description} is an ideal list making environment for definitions.
+
+\framebox{
+    \parbox[c][3.0cm]{4.50cm}{
+        \addvspace{0.2cm} \centering 
+        \textbackslash{begin}\{description\}
+        \textbackslash{item}[\textbf{Word}] \\
+            \par Here is the definition\\
+        \textbackslash{item}[\textbf{Word2}] \\
+            \par Here is the definition 2 \\
+        \textbackslash{end}\{description\}        
+    } 
+}\\
+
+%----------------------------------------------------------------------
+\section{Mathematical Formulas}
+
+\LaTeX{} has many different ways to write mathematical expressions. 
+Using either \textbf{inline} or one of the many different 
+\textit{display} modes. Displays are separate from paragraphs and 
+used as its own code block whereas inline expressions can be used
+with-in writing environments. \\
+
+\begin{itemize}[label={}]
+    \item \textbf{Inline:}
+    \begin{itemize}[label={\bullet}]
+         \item  \mbox{\$ math equation inline \$}
+         \item  \textbackslash{[ math equation inline }\textbackslash{]}
+         \item  \textbackslash{( math equation inline }\textbackslash{)}
+    \end{itemize}
+    \item \textbf{Display:}
+    \begin{itemize}[label={\bullet}]
+         \item \textbackslash{begin}\{equation\} \textbackslash{end}\{equation\}
+         \item \textbackslash{begin}\{displaymath\} \textbackslash{end}\{displaymath\}
+    \end{itemize}
+\end{itemize}\\
+\textbf{inline vs display mode:}\\
+\begin{equation}
+    \mbox{\textbackslash{begin}\{equation\}}
+    \sum_{i=0}^{\infty} \frac{n}{n+1}
+    \mbox{  \textbackslash{end}\{equation\}}    
+\end{equation}
+vs.
+This is inline: $\sum_{i=0}^{\infty} \frac{n}{n+1}$ \footnote{for inline place sound eq. in \$ \$} \\ 
+
+\textbf{code}: \\
+\textbackslash{sum}\_\{$i=0$\}\^\{\textbackslash{infty}\} \textbackslash{frac}\{$n$\}\{$n+1$\} \\
+
+
+%----------------------------------------------------------------------
+
+
+
+%---------------------------------------------------------------------- 
+\section{User-defined macros} ~\cite{uhedu_macros}
+
+Creating your own \textit{commands} via chaining together different
+commands. The definition of which, must be in the preamble section 
+of your \textbf{.tex} file. \\
+Another possible use would be to redefine a command already
+defined by latex. This may lead to serious problems unlike our final
+safer \textit{provide command} that defines the command 
+if and only if (IFF) the command doesn't exist, otherwise no 
+meaning is changed. 
+
+
+\subsection{New Commands}
+
+% \newcommand\DALGORITHM{\vspace{.10in}\textbf{Description of Algorithm: }}
+% \newcommand\PCORRECT{\vspace{.10in}\textbf{Proof of Correctness: }}
+% \newcommand\TIME{\vspace{.10in}\textbf{Analysis of Time: }}
+% \newcommand\SPACE{\vspace{.10in}\textbf{Analysis of Space: }}
+
+\textbackslash{newcommand}\textbackslash{DALGO}\{\textbackslash{vspace}\{.10in\}
+\textbackslash{textbf}\{Description of Algorithm:\}\} \\
+
+I made this simple example while in cmps\-102 class. 
+The \textbf{new command} defined here is \textbackslash{DALGO}. \\
+\begin{itemize}
+    \item \textbackslash{DALGO} produces the text "Description of Algorithm:"
+    \item \textbackslash{newcommand} says we are creating a new command, 
+    \item \textbackslash{DALGO} named "DALGO",
+    \item \textbackslash{vspace}\{.10in\} .10inches 
+            of vertical space between this command 
+            and anything following an instance of 
+            \textbackslash{DALGO},
+    \item \{Description of Algorithm:\} which prints "Description of Algorithm: 
+\end{itemize}
+
+This can be really useful when using the same material over and 
+over again. \LaTeX{} also gives users the ability to redefine 
+existing commands via the \textbackslash{renewcommand}.
+An example of how this can be accomplished is as follows: \\
+
+Original command is \textbackslash{part\{a\}}. the output of the 
+unmodified command is\\ \textbf{Part I}\\ \textbf{a}\\
+Now, our after redefining this command we get the following 
+output:
+\part{a} "with text capabilities" immediately following the 
+command.  \\
+
+\framebox{
+    \parbox[c][3.0cm]{4.50cm}{
+        \addvspace{0.2cm} \centering 
+        \textbf{Original Command }\\
+        \textbackslash{part\{a\}} 
+        \textit{with output }\\
+        {\color{red}\textbf{Part I}\\ \textbf{a}}\\      
+    } 
+}\\
+
+Now, our after redefining this command we get the following 
+output:
+\framebox{
+    \parbox[c][3.0cm]{4.50cm}{
+        \addvspace{0.2cm} \centering 
+        {\color{red}\part{a} "with text capabilities" immediately following the 
+        command.}  \\
+    } 
+}\\
+
+\textbackslash{providecommand}\{\}\{\} which is similar to 
+\textbackslash{newcommand}\{\}\{\} without a generated 
+error message for the existence of a command. \\ 
+
+
+\textbackslash{renewcommand}\textbackslash{\text{part[1]}}\\
+\{\textbackslash{vspace}\{.10in\} \\ 
+\textbackslash{textbf}\{\text{(\#1)}\}\} \\
+
+%----------------------------------------------------------------------
+\section{NFA's and DFA's}
+Of Coase!! \LaTeX{} has a library for almost everything. The specific
+library needed to draw Finite State Machines (FSM) is the 
+\textit{tike\-automata} library. Just like we have been doing, 
+\textbackslash{usepackage}\{tikz\} must be defined in the preamble.
+Now, for the correct positioning and arrows to show direction we must
+also use the \textbackslash{usetikzlibrary}\{automata, positioning, arrows\}.\\
+Nodes are what we are going to be working with, so we want to connect
+these nodes in such a way that we get some FSM. Here is a Deterministic
+Finite Automata for some fun:
+\begin{tikzpicture}
+    \node[state, initial] (q1) {$q_1$};
+    \node[state, accepting, right of=q1] (q2) {$q_2$};
+    \node[state, right of=q2] (q3) {$q_3$};
+    \node[state, accepting, right of=q3] (q4) {$q_4$};
+
+    \draw  (q1) edge[loop above] node{0} (q1)
+           (q1) edge[above] node{1} (q2)
+           (q2) edge[loop above] node{1} (q2)
+           (q2) edge[bend left, above] node{0}  (q3)
+           (q3) edge[loop above] node{2} (q3)
+           (q3) edge[bend left, above] node{0}  (q4)
+           (q4) edge[bend left, below] node{0,1} (q3);
+\end{tikzpicture}
+\cite{gtikz} \\
+
+Here is code used:  \\
+\textbackslash{begin}\{tikzpicture\} \\
+    \textbackslash{node}[state, initial] (q1) \{\$q_1\$\}; \\
+    \textbackslash{node}[state, accepting,right of q1] (q2) \{\$q_2\$\}; \\
+    \textbackslash{node}[state, accepting,right of q1] (q2) \{\$q_2\$\}; \\
+    \textbackslash{node}[state, right of q2] (q3) \{\$q_3\$\}; \\
+    \textbackslash{node}[state, accepting,right of q3] (q4) \{\$q_4\$\}; \\
+    \textbackslash{draw}   (q1) edge[loop above] node{0} (q1) \\
+                           (q1) edge[above] node\{1\} (q2) \\
+                           (q2) edge[loop above] node\{1\} (q2) \\
+                           (q2) edge[bend left, above] node\{0\}  (q3) \\
+                           (q3) edge[loop above] node\{2\} (q3) \\
+                           (q3) edge[bend left, above] node\{0\}  (q4) \\
+                           (q4) edge[bend left, below] node\{0,1\} (q3); \\
+\textbackslash{end}\{tikzpicture\}  \\
+
+
+\section{Bibliography} ~\cite{tugorg}
+The ability to cite different sources, inspirations and influence can
+be very important if you want to be respected in your field. \\
+
+Of coarse, \LaTeX{} does have a bibliography environment 
+called "the bibliography" but after doing much research it
+is much more flexible to create a .bib file, also known as
+a \BibTex{} file that can dynamically receive entries, after
+we identify the type of source we are referencing. 
+~\cite{wiki_title_maker}
+
+All references must begin with a "@" followed by type of reference.
+There are many different types of predefined \textit{standard templates}.
+To list a few: @book\{ \}, @article\{ \}, and @misc\{ \}. \\
+
+These are the entries in your .bib file that you will be inserting
+in-between \textbackslash{begin}\{thebibliography\} and 
+\textbackslash{end}\{thebibliography\}. \\
+Lastly, for \LaTeX{} to be able to find your .bib file, 
+the following two lines of code 
+should be placed within you .tex file preceding \textbackslash{end}\{document\}:
+\textbackslash{bibliography}\{ \textbf{path\_to\_your\_.bib}\} and
+\textbackslash{bibliographystyle}\{ \textbf{plain} \}. 
+Now, in order to cite your source within your article this command should follow
+any instance of another's work \textbackslash{cite}\{ref1,ref2,$\dots$,refn\}.
+
+
+
+
+%\bibliographystyle{plain}
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{plainnat}
+\bibliography{LaTeX_tutorial}
+\end{document}
+
+
+
