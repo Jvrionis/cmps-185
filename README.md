@@ -10,7 +10,7 @@ and oral presentations <br />
 ## Assignment Quick Links
 [Homework 1: Toilet-paper-problem](https://github.com/Jvrionis/cmps-185/tree/master/Assignments/Assignment%201) <br />
 [Homework 2: Resume and Cover page](https://github.com/Jvrionis/cmps-185/tree/master/Assignments/Assignment%202) <br />
-[Homework 3: ](https://github.com/Jvrionis/cmps-185/blob/master/Assignments/Assignment%203/) 
+[Homework 3: LaTeX Tutorial](https://github.com/Jvrionis/cmps-185/blob/master/Assignments/Assignment%203/) 
 <br />
 [Homework 4: Keynote Review](https://github.com/Jvrionis/cmps-185/tree/master/Assignments/Assignment%204) <br />
 [Homework 5: Patent](https://github.com/Jvrionis/cmps-185/tree/master/Assignments/Assignment%205) <br />
